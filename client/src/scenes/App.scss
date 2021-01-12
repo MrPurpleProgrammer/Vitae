@@ -1,0 +1,1112 @@
+@font-face {
+	font-family: Matsury;
+	src: url(../fonts/Matsury.ttf);
+}
+
+@font-face {
+	font-family: Haettenschweiler;
+	src: url(../fonts/Haettenschweiler-Regular.ttf);
+}
+
+.App {
+	text-align: center;
+}
+
+button {
+	outline: none;
+}
+
+canvas {
+	outline: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* mobile webkit */
+  }
+
+#divLogo {
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+	cursor: pointer;
+	z-index: 1000;
+}
+
+#divMenu {
+	z-index: 1001;
+}
+
+#logoMrPurple {
+	-webkit-transition: all 1.5s ease;
+	-moz-transition: all 1.5s ease;
+	-o-transition: all 1.5s ease;
+	transition: all 1.5s ease;
+}
+
+#divLogoContainer {
+	-webkit-transition: all 1.5s ease;
+	-moz-transition: all 1.5s ease;
+	-o-transition: all 1.5s ease;
+	transition: all 1.5s ease;
+}
+
+.initialLogoState {
+	position: fixed;
+	top: 20%;
+	left: 0%;
+	width: 64%;
+}
+
+.initialLogoState h1 {
+	font-family: "Matsury";
+	font-size: 215px;
+	margin: 0px;
+	color: #be7dff;
+	text-shadow: -18px 5px #1e55b4;
+	z-index: 100;
+	opacity: 0;
+	transform: translateY(-100px);
+}
+
+.initialLogoState div {
+	width: 700px;
+	margin: auto;
+}
+
+.defaultLogoState {
+	position: fixed;
+	top: 2% !important;
+	left: 3% !important;
+}
+
+.defaultLogoState div {
+	width: 100%;
+	margin: auto;
+}
+
+.defaultLogoState h1 {
+	font-family: "Matsury";
+	font-size: 80px;
+	margin: 0px;
+	color: #be7dff;
+	text-shadow: -9px 3px #1e55b4;
+	z-index: 100;
+}
+
+/* Our mixin positions a copy of our text
+directly on our existing text, while
+also setting content to the appropriate
+text set in the data-text attribute. */
+@mixin glitchCopy {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.glitch {
+	position: relative;
+	color: white;
+	/* Animation provies a slight random skew. Check bottom of doc
+for more information on how to random skew. */
+	animation: fadeIn 2s ease 1s 1 forwards, slideDown 1s ease 1s 1 forwards,
+		glitch-skew 1s infinite linear 2.9s alternate-reverse;
+	// Creates a copy before our text.
+	&::before {
+		// Duplicates our text with the mixin.
+		@include glitchCopy;
+		// Scoots text slightly to the left for the color offset.
+		left: -5px;
+		// Creates the color 'shadow' that happens on the glitch.
+		text-shadow: -5px 5px #00f7ff;
+		/* Creates an initial clip for our glitch. This works in
+	a typical top,right,bottom,left fashion and creates a mask
+	to only show a certain part of the glitch at a time. */
+		clip: rect(44px, 450px, 56px, 0);
+		/* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
+	with an alternating animation to keep things fresh. */
+		animation: glitch-anim 5s infinite ease 2.9s alternate-reverse;
+	}
+
+	// Creates a copy after our text. Note comments from ::before.
+	&::after {
+		@include glitchCopy;
+		left: 5px;
+		text-shadow: 5px 0 #ff00b3, -2px 2px #00f7ff;
+		animation: glitch-anim2 5s infinite ease 2.9s alternate-reverse;
+	}
+}
+
+.glitch-default {
+	position: relative;
+	color: white;
+	/* Animation provies a slight random skew. Check bottom of doc
+for more information on how to random skew. */
+	// Creates a copy before our text.
+	&::before {
+		// Duplicates our text with the mixin.
+		@include glitchCopy;
+		// Scoots text slightly to the left for the color offset.
+		left: -2px;
+		// Creates the color 'shadow' that happens on the glitch.
+		text-shadow: -2px 0px #00f7ff;
+		/* Creates an initial clip for our glitch. This works in
+	a typical top,right,bottom,left fashion and creates a mask
+	to only show a certain part of the glitch at a time. */
+		clip: rect(44px, 450px, 56px, 0);
+		/* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
+	with an alternating animation to keep things fresh. */
+		animation: glitch-default-anim 5s infinite ease 1s alternate-reverse;
+	}
+
+	// Creates a copy after our text. Note comments from ::before.
+	&::after {
+		@include glitchCopy;
+		left: 2px;
+		text-shadow: 5px 0 #ff00b3, -2px 0px #00f7ff;
+		animation: glitch-default-anim2 8s infinite ease alternate-reverse;
+	}
+}
+
+/* Creates an animation with 20 steaps. For each step, it calculates 
+a percentage for the specific step. It then generates a random clip
+box to be used for the random glitch effect. Also adds a very subtle
+skew to change the 'thickness' of the glitch.*/
+@keyframes glitch-anim {
+	$steps: 20;
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			clip: rect(random(500) + px, 999px, random(500) + px, 0);
+			transform: skew((random(100) / 100) + deg) rotate((random(100) / 100) + deg);
+		}
+	}
+}
+
+// Same deal, just duplicated for ultra randomness.
+@keyframes glitch-anim2 {
+	$steps: 20;
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			clip: rect(random(500) + px, 999px, random(500) + px, 0);
+			transform: skew((random(100) / 100) + deg) rotate((random(100) / 100) + deg);
+		}
+	}
+}
+
+@keyframes glitch-default-anim {
+	$steps: 20;
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			clip: rect(random(100) + px, 399px, random(100) + px, 0);
+			transform: skew((random(100) / 100) + deg) rotate((random(100) / 100) + deg);
+		}
+	}
+}
+
+@keyframes glitch-default-anim2 {
+	$steps: 20;
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			clip: rect(random(100) + px, 399px, random(100) + px, 0);
+			transform: skew((random(100) / 100) + deg) rotate((random(100) / 100) + deg);
+		}
+	}
+}
+
+// Does the same deal as before, but now only skews. Used for main text.
+@keyframes glitch-skew {
+	$steps: 10;
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			transform: skew((random(10) - 5) + deg);
+		}
+	}
+}
+
+@keyframes slideDown {
+	from {
+		transform: translateY(-100px);
+	}
+	to {
+		transform: translateY(0px);
+	}
+}
+
+.navMenu {
+	display: block;
+	position: fixed;
+	top: 5%;
+	right: 0%;
+	height: 100%;
+	width: 42%;
+	float: right;
+	opacity: 0;
+	animation: fadeIn 1s ease 2s forwards;
+}
+
+.innerNav {
+	position: absolute;
+	display: flex;
+	vertical-align: baseline;
+	align-items: center;
+	top: 0%;
+	left: 100px;
+	width: 100%;
+	height: 0%;
+	background-image: linear-gradient(to bottom, #c4c417 40%, rgba(255, 255, 255, 0) 0%);
+	background-position: left;
+	background-size: 4px 15px;
+	background-repeat: repeat-y;
+	animation: heightIncrease 1s ease 2s forwards;
+}
+
+@keyframes heightIncrease {
+	from {
+		height: 0%;
+	}
+	to {
+		height: 90%;
+	}
+}
+
+.innerNav ul {
+	width: 100%;
+	list-style: none;
+	padding: 0px;
+}
+
+.innerNavText {
+	margin: 0% 5%;
+	font-family: "Haettenschweiler";
+	position: relative;
+	cursor: pointer;
+	z-index: 100;
+	opacity: 0;
+	transform: translateX(-30px);
+	animation: fadeIn 2s ease 3.5s 1, translateNavItem 2s ease 3.5s 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes translateNavItem {
+	from {
+		transform: translateX(-30px);
+	}
+	to {
+		transform: translateX(0px);
+	}
+}
+
+.innerNavText span {
+	color: #c4c417;
+	font-size: 165px;
+	animation-duration: 800ms;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+	display: inline-block;
+}
+
+.innerNavText span:hover {
+	color: #a984ce !important;
+	text-shadow: -3px 3px #1e55b4;
+	font-size: 165px;
+	animation-name: rubberBand;
+}
+
+@keyframes rubberBand {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes expand {
+	from {
+		width: 0%;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+.navAboutSelectLine {
+	display: inline-block;
+	height: 15px;
+	position: relative;
+	bottom: 35px;
+	left: 5%;
+	width: 0%;
+	background: #be7dff;
+	border: none;
+	box-shadow: -4px 7px #1e55b4;
+}
+
+.navWorksSelectLine {
+	display: inline-block;
+	height: 15px;
+	position: relative;
+	top: -35px;
+	left: 5%;
+	width: 0%;
+	background: #be7dff;
+	border: none;
+	z-index: 0;
+	box-shadow: -4px 7px #1e55b4;
+}
+
+.navContactSelectLine {
+	display: inline-block;
+	height: 15px;
+	position: relative;
+	top: -35px;
+	left: 5%;
+	width: 0%;
+	background: #be7dff;
+	border: none;
+	box-shadow: -4px 7px #1e55b4;
+}
+
+.none {
+	display: none;
+}
+
+.burgerMenu {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	margin: -25px -10px;
+}
+
+.line {
+	fill: none;
+	stroke: #c4c417;
+	stroke-width: 3;
+	transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+		stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line1 {
+	stroke-dasharray: 60 207;
+	stroke-width: 3;
+}
+
+.line2 {
+	stroke-dasharray: 60 60;
+	stroke-width: 3;
+}
+
+.line3 {
+	stroke-dasharray: 60 120;
+	stroke-width: 3;
+}
+
+.line4 {
+	stroke-dasharray: 60 207;
+	stroke-width: 3;
+}
+
+.opened .line1 {
+	stroke-dasharray: 90 207;
+	stroke-dashoffset: -134;
+	stroke-width: 3;
+}
+
+.opened .line2 {
+	stroke-dasharray: 1 60;
+	stroke-dashoffset: -30;
+	stroke-width: 0;
+}
+
+.opened .line3 {
+	stroke-dasharray: 1 60;
+	stroke-dashoffset: -30;
+	stroke-width: 0;
+}
+
+.opened .line4 {
+	stroke-dasharray: 90 207;
+	stroke-dashoffset: -134;
+	stroke-width: 3;
+}
+
+.contentView {
+	width: 64%;
+	height: 80%;
+	position: fixed;
+	top: 15%;
+}
+
+.stepOne {
+	display: block;
+	position: relative;
+	top: 48%;
+	flex-flow: wrap;
+	font-family: ocr-a-std;
+	width: 700px;
+	margin: auto;
+}
+
+.stepOne h1 {
+	font-size: 68px;
+	color: #a984ce;
+	overflow: hidden;
+	padding: 20px 0px;
+	opacity: 0;
+	/* Ensures the content is not revealed until the animation */
+	border-right: 0.1em solid transparent;
+	/* The typwriter cursor */
+	white-space: nowrap;
+	/* Keeps the content on a single line */
+	margin: 0 auto;
+	/* Gives that scrolling effect as the typing happens */
+	letter-spacing: 0px;
+	/* Adjust as needed */
+	animation: typing 2.5s steps(30, end) 1s, blink-caret 0.7s step-end 1s 7.1;
+	animation-fill-mode: forwards;
+}
+
+.stepOne .subTitle {
+	font-size: 23px;
+	color: #89a4d5;
+	margin: 5px 0px;
+	opacity: 0;
+	transform: translateY(40px) skew(-10deg, 0deg);
+	animation: fadeIn 1.5s ease 3.5s 1, textTransform 1.5s ease 3.5s 1;
+	animation-fill-mode: forwards;
+	padding: 5px 0px 0px 0px;
+}
+
+.stepOne .bodyText {
+	color: #9a9a9a;
+	margin: 20px 0px;
+	font-size: 16px;
+	width: 700px;
+	line-height: 25px;
+	opacity: 0;
+	transform: translateY(40px) skew(-10deg, 0deg);
+	animation: fadeIn 1.5s ease 4s 1, textTransform 1.5s ease 4s 1;
+	animation-fill-mode: forwards;
+}
+
+.stepTwo {
+	display: block;
+	position: relative;
+	top: 20%;
+	flex-flow: wrap;
+	font-family: ocr-a-std;
+	width: 700px;
+	margin: auto;
+}
+
+.stepTwo h1 {
+	font-size: 68px;
+	color: #a984ce;
+	margin: 0px;
+	padding-right: 25px;
+}
+
+.focusText {
+	text-shadow: -5px 3px #1e55b49f;
+	padding: 10px 0px;
+	animation: fadeIn 1.5s ease 1.5s 1, textTransform 1.5s ease 1.5s 1;
+	animation-fill-mode: forwards;
+	margin: 10px 0px;
+	opacity: 0;
+}
+
+.focusText h1:nth-child(6) {
+	text-shadow: -5px 3px #1e55b4;
+	opacity: 0;
+	animation: alive infinite linear 2s alternate-reverse, fadeIn 1s ease 1.3s 1 forwards,
+		textTransform 1.5s ease 1.3s 1;
+}
+
+@keyframes alive {
+	$steps: 10;
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			text-shadow: (random(14)-7 + px) (random(14)-7 + px) #f000f8a6;
+		}
+	}
+}
+
+.stepTwo > p:nth-child(1) {
+	font-size: 23px;
+	color: #89a4d5;
+	margin: 5px 0px;
+	padding: 5px 0px 0px 0px;
+	line-height: 35px;
+}
+
+.char {
+	animation: dropIn 1s ease-out 1.5s 1 both;
+	display: inline-block;
+}
+
+@keyframes dropIn {
+	from {
+		opacity: 0;
+		transform: perspective(500px) translate3d(-35px, -40px, -150px) rotate3d(1, -1, 0, 35deg);
+	}
+	to {
+		opacity: 1;
+		transform: perspective(500px) translate3d(0, 0, 0);
+	}
+}
+
+.dud {
+	color: #757575;
+}
+
+.stepTwo .flexWrap {
+	display: inline-flex;
+	flex-wrap: wrap;
+}
+
+.subtitleList {
+	font-size: 23px;
+	color: #a984ce;
+	line-height: 0px;
+}
+
+.stepTwo .flexWrap > p {
+	padding-right: 15px;
+	color: #9a9a9a;
+	transform: translateX(-30px);
+	opacity: 0;
+}
+
+.stepTwo .flexWrap > p:nth-child(1) {
+	animation: slideIn 1s ease 2s forwards, fadeIn 1s ease 2s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(2) {
+	animation: slideIn 1s ease 2.2s forwards, fadeIn 1s ease 2.2s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(3) {
+	animation: slideIn 1s ease 2.4s forwards, fadeIn 1s ease 2.4s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(4) {
+	animation: slideIn 1s ease 2.6s forwards, fadeIn 1s ease 2.6s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(5) {
+	animation: slideIn 1s ease 2.8s forwards, fadeIn 1s ease 2.8s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(6) {
+	animation: slideIn 1s ease 3s forwards, fadeIn 1s ease 3s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(7) {
+	animation: slideIn 1s ease 3.2s forwards, fadeIn 1s ease 3.2s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(8) {
+	animation: slideIn 1s ease 3.4s forwards, fadeIn 1s ease 3.4s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(9) {
+	animation: slideIn 1s ease 3.6s forwards, fadeIn 1s ease 3.6s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(10) {
+	animation: slideIn 1s ease 3.8s forwards, fadeIn 1s ease 3.8s forwards;
+}
+.stepTwo .flexWrap > p:nth-child(11) {
+	animation: slideIn 1s ease 4s forwards, fadeIn 1s ease 4s forwards;
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(-30px);
+	}
+	to {
+		transform: translateX(0px);
+	}
+}
+
+.stepThree {
+	display: block;
+	position: relative;
+	top: 5%;
+	flex-flow: wrap;
+	font-family: ocr-a-std;
+	width: 700px;
+	margin: auto;
+}
+
+.stepThree h1 {
+	font-size: 42px;
+	color: #a984ce;
+	overflow: hidden;
+	padding: 10px 0px;
+	animation: fadeIn 1s ease 0.5s, textTransform 1s ease 0.5s;
+	animation-fill-mode: forwards;
+	margin: 10px 0px;
+	opacity: 0;
+}
+
+.stepThree > p {
+	font-size: 23px;
+	color: #a984ce;
+	margin: 5px 0px;
+	opacity: 0;
+	transform: translateY(40px) skew(-10deg, 0deg);
+	animation: fadeIn 1.5s ease 2s 1, textTransform 1.5s ease 2s 1;
+	animation-fill-mode: forwards;
+	padding: 5px 0px 0px 0px;
+	line-height: 35px;
+}
+
+.filterList {
+	display: flex;
+	font-size: 16px;
+	color: #7d7b7e;
+	flex-wrap: wrap;
+	width: 734px;
+	flex-flow: row wrap;
+	justify-content: start;
+	align-content: flex-start;
+}
+
+.filterList > div {
+	padding-right: 15px;
+	line-height: 0px;
+	opacity: 0;
+	z-index: 1000;
+}
+
+.filterList > div > p {
+	cursor: pointer;
+}
+
+.filterList > .activeFilter {
+	color: #be7dff;
+	text-shadow: -3px 3px #1e55b4;
+	text-decoration: underline;
+}
+
+.filterList > div:nth-child(1) {
+	animation: slideIn 0.5s ease 1s forwards, fadeIn 0.5s ease 1s forwards;
+}
+.filterList > div:nth-child(2) {
+	animation: slideIn 0.5s ease 1.2s forwards, fadeIn 0.5s ease 1.2s forwards;
+}
+.filterList > div:nth-child(3) {
+	animation: slideIn 0.5s ease 1.4s forwards, fadeIn 0.5s ease 1.4s forwards;
+}
+.filterList > div:nth-child(4) {
+	animation: slideIn 0.5s ease 1.6s forwards, fadeIn 0.5s ease 1.6s forwards;
+}
+.filterList > div:nth-child(5) {
+	animation: slideIn 0.5s ease 1.8s forwards, fadeIn 0.5s ease 1.8s forwards;
+}
+.filterList > div:nth-child(6) {
+	animation: slideIn 0.5s ease 2s forwards, fadeIn 0.5s ease 2s forwards;
+}
+.filterList > div:nth-child(7) {
+	animation: slideIn 0.5s ease 2.2s forwards, fadeIn 0.5s ease 2.2s forwards;
+}
+
+.workGrid {
+	display: grid;
+	margin-top: 20px;
+	grid-template-columns: 150px 150px 150px 150px;
+	grid-template-rows: auto;
+	grid-column-gap: 25px;
+	grid-row-gap: 10px;
+}
+
+.workItem {
+	height: 150px;
+	width: 155px;
+	border: solid 5px #1e55b4;
+	position: relative;
+	cursor: pointer;
+	opacity: 0;
+	border-radius: 5px;
+}
+
+.workItem:hover {
+	border: solid 5px #a883cd;
+	box-shadow: 0px 0px 100px #a883cd;
+	background-color: #cebede;
+}
+
+.illuminateDiv {
+	width: 100%;
+	height: 100%;
+}
+
+.illuminateDiv:hover {
+	animation: illuminate 1s ease forwards;
+}
+
+.workItem:hover p {
+	color: #a883cd;
+	text-shadow: #1e55b4;
+	animation: jitter_child infinite linear 2s alternate-reverse;
+}
+
+.workItem:nth-of-type(1), .workItem:nth-of-type(5), .workItem:nth-of-type(9){
+	animation: fadeIn 0.5s ease-in 2.5s forwards 1, cardFlip 0.5s ease-out 2.5s forwards 1;
+}
+
+.workItem:nth-of-type(2), .workItem:nth-of-type(6), .workItem:nth-of-type(10){
+	animation: fadeIn 0.5s ease-in 2.8s forwards 1, cardFlip 0.5s ease-out 2.8s forwards 1;
+}
+
+.workItem:nth-of-type(3), .workItem:nth-of-type(7), .workItem:nth-of-type(11){
+	animation: fadeIn 0.5s ease-in 3.1s forwards 1, cardFlip 0.5s ease-out 3.1s forwards 1;
+}
+
+.workItem:nth-of-type(4), .workItem:nth-of-type(8){
+	animation: fadeIn 0.5s ease-in 3.4s forwards 1, cardFlip 0.5s ease-out 3.4s forwards 1;
+}
+
+
+.workItem p {
+	position: relative;
+	margin: auto;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	color: #7c7a7d;
+}
+
+.stepFour {
+	display: block;
+	position: relative;
+	top: 23%;
+	flex-flow: wrap;
+	font-family: ocr-a-std;
+	width: 700px;
+	margin: auto;
+}
+
+.stepFour h1 {
+	font-size: 40px;
+	color: #d4aaff;
+	overflow: hidden;
+	padding: 10px 0px;
+	animation: fadeIn 1s ease 1s, textTransform 1s ease 1s;
+	animation-fill-mode: forwards;
+	margin: 10px 0px;
+	line-height: 55px;
+	opacity: 0;
+}
+
+.contactList {
+	display: flex;
+}
+
+.contactList p {
+	font-size: 27px;
+	color: #b9b9b9;
+	margin: 5px 25px 5px 0px;
+	opacity: 0;
+	transform: translateX(-30px);
+	animation: slideIn 0.5s ease 1.5s forwards, fadeIn 0.5s ease 1.5s forwards;
+	animation-fill-mode: forwards;
+	padding: 5px 0px 0px 0px;
+	line-height: 35px;
+	cursor: pointer;
+}
+
+.contactList p:hover {
+	text-decoration: underline;
+	color: #b176ec;
+	text-shadow: -3px 3px #1e55b4;
+}
+
+.contactMap {
+	width: 100%;
+    height: 100%;
+    position: fixed;
+	transform: translateY(150px);
+	opacity: 0;
+	top: 0%;
+	z-index: -100;
+	animation: fadeIn 1s ease 2s forwards;
+}
+
+.mapContainer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.progressLine {
+    border: 4px solid #fefe00;
+    border-radius: 8px;
+    box-shadow: -5px 0px 9px #888852;
+    display: block;
+    position: absolute;
+    top: -1%;
+    left: -0.3%;
+    height: 0%;
+    width: 0%;
+}
+
+.scrollDownLogo {
+    z-index: 1005;
+    height: 3%;
+    width: auto;
+    top: 92%;
+    position: fixed;
+	left: 28%;
+	opacity: 0;
+	animation: scrollDownFade 0.5s ease 5.5s 1 forwards;
+}
+
+@keyframes scrollDownFade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 0.5;
+	}
+}
+
+.scrollDownLogo h1 {
+	font-size: 10px;
+	font-family: ocr-a-std;
+	color: #89a4d5;
+	margin-top: 15px;
+}
+
+.scrollDownLogo svg {
+	margin: auto;
+    position: relative;
+    display: block;
+}
+
+.workDetails {
+	display: none;
+    position: relative;
+    top: 5%;
+    flex-flow: wrap;
+    font-family: ocr-a-std;
+    width: 750px;
+    height: 85%;
+    margin: auto;
+    border: 7px solid #1e55b4;
+}
+
+.workDetails i {
+	font-size: 40px;
+    color: #1e55b4;
+    position: absolute;
+    top: 22px;
+	left: 30px;
+	cursor: pointer;
+}
+
+.workDetails i:hover {
+	color: #fefe00;
+}
+
+.projectContent  {
+	position: absolute;
+    top: 45px;
+    left: 95px;
+    width: 580px;
+}
+
+.projectContent>h1 {
+    font-size: 35px;
+    margin: 15px 0px;
+    color: #be7dff;
+    font-weight: 100;
+    width: fit-content;
+}
+
+.projectContent>p {
+    font-size: 14px;
+    color: #7D7B7E;
+    line-height: 27px;
+    font-weight: 100;
+}
+
+.projectTechnologies h1 {
+    font-size: 20px;
+    margin: 15px 0px;
+    color: #be7dff;
+    font-weight: 100;
+}
+
+.projectTechnologies p {
+    font-size: 14px;
+    font-weight: 100;
+    color: #7d7b7e;
+    line-height: 27px;
+}
+
+.projectStatusContainer {
+	position: absolute;
+    top: 30px;
+    right: 65px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+}
+
+.projectStatus {
+	padding-top: 10px;
+}
+
+.projectStatus h1 {
+	font-size: 14px;
+	color: #c4c417;
+	font-weight: 100;
+	margin: 0px;
+}
+
+.projectLinks {
+    display: inline-flex;
+    text-align: left;
+    margin-left: 18px;
+}
+
+.projectLinks h1 {
+	margin: 0px
+}
+
+.projectLinks>h1>a {
+    font-size: 14px;
+    color: #1e55b4;
+    padding-right: 20px;
+    font-weight: 100;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateY(0);
+	}
+	30% {
+		transform: translateY(100px);
+	}
+}
+
+svg #wheel {
+	animation: scroll ease 1.5s infinite;
+}
+
+
+
+@keyframes slideUp {
+	from {
+		transform: translateY(150px)
+	}
+	to {
+		transform: translateY(0px);
+	}
+}
+
+@keyframes cardFlip {
+	from {
+		transform: matrix(0.7, -0.3, 0, 1, 0, 0) translate(-32px, -32px);
+	}
+	to {
+		transform: matrix(1, 0, 0, 1, 0, 0) translate(0px, 0px);
+	}
+}
+
+@keyframes typing {
+	from {
+		opacity: 1;
+		width: 0;
+	}
+	to {
+		opacity: 1;
+		width: 100%;
+	}
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+	from,
+	to {
+		border-color: transparent;
+	}
+	50% {
+		border-color: #1e55b4;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes textTransform {
+	from {
+		transform: translateY(40px) skew(-10deg, 0deg);
+	}
+	to {
+		transform: translateY(0px) skew(0deg, 0deg);
+	}
+}
+
+@keyframes jitter_parent {
+	$steps: 20;
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			transform: translate((random(10)-5 + px), (random(10)-5 + px)) skew((random(100) / 100) + deg);
+			box-shadow: (random(20)-10 + px) (random(20)-10 + px) #1e55b4;
+		}
+	}
+}
+
+@keyframes jitter_child {
+	$steps: 20;
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			text-shadow: (random(6)-3 + px) (random(6)-3 + px) #1e55b4;
+			font-size: (random(10) + 10 + px);
+		}
+	}
+}
+
+@keyframes illuminate {
+	from {
+		box-shadow: 0px 0px 0px #a883cd;
+	}
+	to {
+		box-shadow: 0px 0px 100px #a883cd;
+	}
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(-30px);
+	}
+	to {
+		transform: translateX(0px);
+	}
+}
+
+.none {
+	display: none;
+}
