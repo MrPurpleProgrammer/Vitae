@@ -32,7 +32,7 @@ function App() {
     else if (pos >= 60 && pos < 80) newStep = 3;
     else if (pos >= 80 && pos < 101) newStep = 4;
     setContentState(newStep);
-    if (pos === 0) { $('.progressLine').hide(); }
+    if (pos === 0) { $('.progressLine').fadeOut(); }
     else { $('.progressLine').show().height(pos + '%') }
   }
   let handleContentTransition = () => {

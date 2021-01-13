@@ -1,6 +1,6 @@
 import BurgerMenu from '../BurgerMenu/BurgerMenu'
 import $ from 'jquery'
-import ProgressLine from '../../components/ProgressLine/ProgressLine'
+import ProgressLine from '../ProgressLine/ProgressLine'
 import { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
 import { useHistory, useLocation } from 'react-router-dom';
 const NavMenu = forwardRef((props, ref) => {
@@ -40,16 +40,19 @@ const NavMenu = forwardRef((props, ref) => {
     }
     let navigateTo = (path) => {
         if (path === "about") {
+            $('.progressLine').show().animate({height: '0%'}, 800);
             window.scrollTo({ top: 0, behaviour: 'smooth' });
             props.content(0);
             setMenuState('about');
         }
         if (path === "works") {
+            $('.progressLine').show().animate({height: '47%'}, 800);
             window.scrollTo({ top: 4200, behaviour: 'smooth' });
             props.content(2);
             setMenuState('works');
         }
         if (path === "contact") {
+            $('.progressLine').show().animate({height: '69%'}, 800);
             window.scrollTo({ top: 6200, behaviour: 'smooth' });
             props.content(3);
             setMenuState('contact')
