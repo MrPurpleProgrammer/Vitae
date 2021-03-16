@@ -9,9 +9,61 @@ import NavMenu from '../components/NavMenu/NavMenu'
 import Logo from '../components/Logo/Logo'
 import { useState, useEffect, useRef } from 'react';
 import $ from 'jquery';
-import scrollDown from '../components/ScrollDown/ScrollDown'
 import ScrollDown from '../components/ScrollDown/ScrollDown';
-function App() {
+import Mouse from '../components/Mouse/Mouse';
+import bg from '../assets/Monday Loop.mp3';
+function LoaderContent(props) {
+  useEffect(() => {
+    setTimeout(() => {
+      $('#divParentLoader').addClass('flickerOut');
+      $('.topLoader').animate({ height: "45%" });
+      $('.bottomLoader').animate({ height: "45%" });
+      $('#loadingText').animate({ opacity: 0 }, () => {
+        $('#loadingText').hide();
+        $('#readyText').show();
+        $('.btn-glitch-fill').animate({ opacity: 1 });
+      });
+    }, 3500);
+  }, [])
+
+  let handleButtonClick = () => {
+    $('.topLoader').animate({ height: "0%" });
+    $('.bottomLoader').animate({ height: "0%" }, () => {
+      props.startMusic();
+      props.loaderState(false);
+    });
+  }
+  return (
+    <div id="divLoaderContent" className="loaderContent" translate="no">
+      <div id="divTopHalf" className="topLoader"></div>
+      <div id="divBottomHalf" className="bottomLoader"></div>
+      <div id="divParentLoader" >
+        <div class="wrap">
+          <div class="angle"></div>
+          <div class="angle"></div>
+          <div class="angle"></div>
+          <div class="angle"></div>
+        </div>
+      </div>
+      <button class="btn-glitch-fill" onClick={() => { handleButtonClick() }}>
+        <span class="text">Initialize</span><span class="decoration">&rArr;</span>
+      </button>
+      <svg id="svgLoader" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"></feGaussianBlur>
+            <feColorMatrix in="blur" mode="matrix" result="goo" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"></feColorMatrix>
+            <feComposite in2="goo" in="SourceGraphic" operator="atop"></feComposite>
+          </filter>
+        </defs>
+      </svg>
+      <h1 id="loadingText" > Hold on, MrPurple is busy fixing climate change...</h1>
+      <h1 id="readyText"> We're ready for you, <span style={{ color: "#be7dff" }}>Click on the button above.</span> (Turn your volume up for the complete experience) </h1>
+      <Mouse />
+    </div>
+  )
+}
+function MainContent() {
   const [logoState, setLogoState] = useState('Landing');
   const [contentState, setContentState] = useState(0);
   const [scrollPos, setScrollPos] = useState(0);
@@ -23,7 +75,6 @@ function App() {
   }
   let handleScrollTransition = () => {
     let pos = showScrollPosition(document.body);
-    console.log(window.scrollY);
     setScrollPos(pos);
     let newStep;
     if (pos >= 0 && pos < 20) newStep = 0;
@@ -36,7 +87,6 @@ function App() {
     else { $('.progressLine').show().height(pos + '%') }
   }
   let handleContentTransition = () => {
-    console.log(scrollPos, contentState);
     navRef.current.setNavLineState(contentState)
     if (contentState === 0) {
       $('.contactMap').hide();
@@ -116,7 +166,31 @@ function App() {
         {content()}
         <ScrollDown />
       </div>
+      <Mouse />
     </Router>
+  )
+}
+function App() {
+  const [loader, setLoaderState] = useState(true);
+  useEffect(() => {
+    document.querySelector("audio").volume = 0.2;
+  }, [])
+  let handleState = () => {
+    if (loader === true) {
+      return (
+        <LoaderContent loaderState={state => setLoaderState(state)} startMusic={() => {document.querySelector("audio").play()}}/>
+      )
+    }
+    else return (<MainContent />)
+  }
+  return (
+    <div>
+      {handleState()}
+      <audio style={{display: "none"}} controls autoplay>
+        <source src={bg} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+    </div>
   );
 }
 

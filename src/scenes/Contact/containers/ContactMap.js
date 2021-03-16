@@ -9,7 +9,7 @@ class ContactMap extends React.Component {
         this.state = {
             lng: -120.3242,
             lat: 33.1545,
-            zoom: 5.35,
+            zoom: 3.35,
             camera: 0,
             bearing: -159.68203884901615
         };
@@ -26,16 +26,16 @@ class ContactMap extends React.Component {
         });
         setTimeout(() => {
             map.flyTo({
-                center: [-118.0276, 33.6225],
+                center: [-118.1036, 33.5128],
                 bearing: -173.28203884901694,
                 pitch: 65,
-                zoom: 11.18,
+                zoom: 10.53,
                 speed: 0.7,
                 easing(t) {
-                    return t;
+                    return 1 - Math.pow(1 - t, 5);
                 }
             });
-        }, 0);
+        }, 500);
         var marker = new mapboxgl.Marker({
             color: "#a984ce",
             draggable: false
@@ -50,7 +50,6 @@ class ContactMap extends React.Component {
                 zoom: map.getZoom().toFixed(2),
                 bearing: map.getBearing(),
             });
-            console.log(this.state.lat, this.state.lng);
         });
         map.resize();
         map.scrollZoom.disable();

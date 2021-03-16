@@ -17,42 +17,62 @@ const NavMenu = forwardRef((props, ref) => {
         }
     }));
     let handleMenuCollapse = () => {
-        $('.burgerMenu').toggleClass('opened');
-        if (openState === false) {
-            $('#divInnerMenu').animate({ opacity: 0 }, () => {
-                $('#divMenu').animate({ width: "120px" })
-                $('.contentView').animate({ width: "100%" });
-                $('.scrollDownLogo').css({ left: "45%" });
-                $('.initialLogoState').css({ width: "100%" });
-                $('.defaultLogoState').css({ width: "100%" });
-            });
+        if (windowWidth > 1200) {
+            if (openState === false) {
+                $('#divInnerMenu').animate({ opacity: 0 }, () => {
+                    $('#divMenu').animate({ width: "120px" })
+                    $('.contentView').animate({ width: "100%" });
+                    $('.scrollDownLogo').css({ left: "45%" });
+                    $('.initialLogoState').css({ width: "100%" });
+                });
+            }
+            else {
+                $('.scrollDownLogo').css({ left: "28%" });
+                $('.contentView').animate({ width: "64%" }, () => {
+                    $('#divMenu').animate({ width: "42%" }, () => {
+                        $('#divInnerMenu').animate({ opacity: 1 })
+                    });
+                });
+                $('.initialLogoState').css({ width: "64%" });
+            }
         }
         else {
-            $('.scrollDownLogo').css({ left: "28%" });
-            $('.contentView').animate({ width: "64%" }, () => {
-                $('#divMenu').animate({ width: "42%" }, () => {
+            // $('#divMenu').attr('style', function (i, style) {
+            //     return style && style.replace(/display[^;]+;?/g, '');
+            // });
+            // $('#divInnerMenu').attr('style', function (i, style) {
+            //     return style && style.replace(/display[^;]+;?/g, '');
+            // });
+            if (openState === false) {
+                $('#divInnerMenu').animate({ opacity: 0 }, () => {
+                    $('#divMenu').animate({ width: "0%" });
+                    $('#divMenu').css({ borderLeft: "#fefe00 0px solid" });
+                });
+            }
+            else {
+                $('#divMenu').css({ borderLeft: "#fefe00 5px solid" });
+                $('#divMenu').animate({ width: "100%" }, () => {
                     $('#divInnerMenu').animate({ opacity: 1 })
                 });
-            });
-            $('.initialLogoState').css({ width: "64%" });
-            $('.defaultLogoState').css({ width: "64%" });
+            }
         }
+
     }
     let navigateTo = (path) => {
         if (path === "about") {
-            $('.progressLine').show().animate({height: '0%'}, 800);
+            $('.progressLine').show().animate({ height: '0%' }, 800);
             window.scrollTo({ top: 0, behaviour: 'smooth' });
             props.content(0);
             setMenuState('about');
         }
         if (path === "works") {
-            $('.progressLine').show().animate({height: '47%'}, 800);
+            $('.progressLine').show().animate({ height: '47%' }, 800);
             window.scrollTo({ top: 4200, behaviour: 'smooth' });
             props.content(2);
             setMenuState('works');
         }
         if (path === "contact") {
-            $('.progressLine').show().animate({height: '69%'}, 800);
+            $('.progressLine').show().animate({ height: '69%' }, 800);
             window.scrollTo({ top: 6200, behaviour: 'smooth' });
             props.content(3);
             setMenuState('contact')
@@ -62,54 +82,69 @@ const NavMenu = forwardRef((props, ref) => {
         window.addEventListener('resize', () => {
             let windowWidth = $(window).width();
             setWindowWidth(windowWidth);
-            if (windowWidth < 1366) setOpenState(false)
-            else setOpenState(true);
+            if(windowWidth <= 1200) {
+                $('#divMenu').css({ width: "0%" });
+            }
+            else if(windowWidth > 1200 && windowWidth <= 1366) {
+                $('#divMenu').css({ width: "120px" });
+            }
+            if (windowWidth < 1366) {
+                setOpenState(false)
+            }
+            else {
+                setOpenState(true);
+            }
         })
-        // $('.innerNavText span').on('click', (e, o) => {
-        //     $('#' + e.target.id).css({
-        //         color: "#a984ce",
-        //         textShadow: "-3px 3px #1e55b4"
-        //     })
-        // });
+        $('.innerNavText span').on('mouseover', (e) => {
+            $('#' + e.currentTarget.id).addClass('rubberBandOnHover');
+            setTimeout(() => {
+                $('#' + e.currentTarget.id).removeClass('rubberBandOnHover');
+            }, 800)
+        })
         $('#divNavAbout').next('hr').delay(3200).animate({ width: "100%" });
         $('#divNavWorks').next('hr').animate({ width: "0%" });
         $('#divNavContact').next('hr').animate({ width: "0%" });
     }, [])
     useEffect(() => {
+        $('.burgerMenu').toggleClass('opened');
         handleMenuCollapse();
     }, [openState])
     useEffect(() => {
         if (menuState === 'initial') {
-            $('#divNavAbout span').css({ color: "#ff0" });
-            $('#divNavWorks span').css({ color: "#c4c417" });
-            $('#divNavContact span').css({ color: "#c4c417" });
+            $('#divNavAbout span').css({ color: "#ff0", textShadow: "-5px 5px #1d54b3" });
+            $('#divNavWorks span').css({ color: "#c4c417", textShadow: "none" });
+            $('#divNavContact span').css({ color: "#c4c417", textShadow: "none" });
             $('#divNavAbout').next('hr').delay(3200).animate({ width: "100%" });
             $('#divNavWorks').next('hr').animate({ width: "0%" });
             $('#divNavContact').next('hr').animate({ width: "0%" });
+            handleMenuCollapse();
         }
         if (menuState === 'about') {
-            $('#divNavAbout span').css({ color: "#ff0" });
-            $('#divNavWorks span').css({ color: "#c4c417" });
-            $('#divNavContact span').css({ color: "#c4c417" });
+            $('#divNavAbout span').css({ color: "#ff0", textShadow: "-5px 5px #1d54b3" });
+            $('#divNavWorks span').css({ color: "#c4c417", textShadow: "none" });
+            $('#divNavContact span').css({ color: "#c4c417", textShadow: "none" });
             $('#divNavAbout').next('hr').animate({ width: "100%" });
             $('#divNavWorks').next('hr').animate({ width: "0%" });
             $('#divNavContact').next('hr').animate({ width: "0%" });
+            handleMenuCollapse();
         }
         if (menuState === 'works') {
-            $('#divNavAbout span').css({ color: "#c4c417" });
-            $('#divNavWorks span').css({ color: "#ff0" });
-            $('#divNavContact span').css({ color: "#c4c417" });
+            $('#divNavAbout span').css({ color: "#c4c417", textShadow: "none" });
+            $('#divNavWorks span').css({ color: "#ff0", textShadow: "-5px 5px #1d54b3" });
+            $('#divNavContact span').css({ color: "#c4c417", textShadow: "none" });
             $('#divNavAbout').next('hr').animate({ width: "0%" });
             $('#divNavWorks').next('hr').animate({ width: "100%" });
             $('#divNavContact').next('hr').animate({ width: "0%" });
+            handleMenuCollapse();
         }
         if (menuState === 'contact') {
-            $('#divNavAbout span').css({ color: "#c4c417" });
-            $('#divNavWorks span').css({ color: "#c4c417" });
-            $('#divNavContact span').css({ color: "#ff0" });
+            $('#divNavAbout span').css({ color: "#c4c417", textShadow: "none" });
+            $('#divNavWorks span').css({ color: "#c4c417", textShadow: "none" });
+            $('#divNavContact span').css({ color: "#ff0", textShadow: "-5px 5px #1d54b3" });
             $('#divNavAbout').next('hr').animate({ width: "0%" });
             $('#divNavWorks').next('hr').animate({ width: "0%" });
             $('#divNavContact').next('hr').animate({ width: "100%" });
+            handleMenuCollapse();
         }
     }, [menuState])
     return (
@@ -146,7 +181,7 @@ const NavMenu = forwardRef((props, ref) => {
                             <span id="spnContact_t">t</span>
                             <span id="spnContact_a">a</span>
                             <span id="spnContact_c">c</span>
-                            <span id="spnContact_t">t</span>
+                            <span id="spnContact_t_2">t</span>
                         </div>
                         <hr className="navContactSelectLine"></hr>
                     </li>

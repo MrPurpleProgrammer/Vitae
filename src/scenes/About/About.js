@@ -19,7 +19,7 @@ function About() {
                 <h1>Hey I'm Aditya</h1>
                 <p className="subTitle">A Full Stack Developer and UI/UX Designer</p>
                 <p className="bodyText">
-                    As an engineer, my goal is to invent and develop tools that enrich and improve society. As a designer, I want to do it with style.
+                    As an engineer, my goal is to invent and develop awesome tools. As a designer, I want to do it with style.
                     This website is a place to showcase my technical expertise, display my open source projects, and document my growth. Enjoy!
                 </p>
             </div>
@@ -43,7 +43,7 @@ function About() {
                     <p>Kickboxing, </p>
                     <p>Exploring, </p>
                     <p>Hiking, </p>
-                    <p>Traveling, </p>
+                    <p>Traveling </p>
                 </div>
             </div>
         </div >
