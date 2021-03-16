@@ -415,6 +415,20 @@ for more information on how to random skew. */
 	}
 }
 
+.music {
+	position: fixed;
+    bottom: 30px;
+    right: 55px;
+    z-index: 10000;
+}
+
+.music i {
+	display: none;
+    font-size: 50px;
+    color: #c4c41747;
+    cursor: pointer;
+}
+
 .flickerOut {
 	animation: flickerOutAnim 0.5s linear 1 forwards;
 }

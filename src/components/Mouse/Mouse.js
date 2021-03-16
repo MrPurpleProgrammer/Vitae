@@ -41,7 +41,7 @@ function Mouse(props) {
         });
     
         document.addEventListener("mouseover", (e) => {
-            if (!e.target.matches(".innerNavText span, .burgerMenu svg, .workItem, .btn-glitch-fill, .btn-glitch-fill span")) return;
+            if (!e.target.matches(".innerNavText span, .burgerMenu svg, .workItem, .btn-glitch-fill, .btn-glitch-fill span, .music i")) return;
             gsap.to(turbulence, {
                 duration: 3,
                 startAt: { attr: { baseFrequency: 0.04 } },
@@ -56,7 +56,7 @@ function Mouse(props) {
         });
     
         document.addEventListener("mouseout", (e) => {
-            if (!e.target.matches(".innerNavText span, .burgerMenu svg, .workItem, .btn-glitch-fill, .btn-glitch-fill span")) return;
+            if (!e.target.matches(".innerNavText span, .burgerMenu svg, .workItem, .btn-glitch-fill, .btn-glitch-fill span, .music i")) return;
             gsap.to(turbulence, {
                 duration: 2,
                 startAt: { attr: { baseFrequency: 0.1 } },

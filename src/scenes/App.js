@@ -11,7 +11,7 @@ import { useState, useEffect, useRef } from 'react';
 import $ from 'jquery';
 import ScrollDown from '../components/ScrollDown/ScrollDown';
 import Mouse from '../components/Mouse/Mouse';
-import bg from '../assets/Monday Loop.mp3';
+import Music from '../components/Music/Music';
 function LoaderContent(props) {
   useEffect(() => {
     setTimeout(() => {
@@ -145,6 +145,7 @@ function MainContent() {
   }
   useEffect(() => {
     $('.progressLine').hide();
+    $('.music i').show();
     window.scrollTo({ top: 0 });
     window.addEventListener('scroll', handleScrollTransition);
     window.onbeforeunload = function () {
@@ -172,9 +173,6 @@ function MainContent() {
 }
 function App() {
   const [loader, setLoaderState] = useState(true);
-  useEffect(() => {
-    document.querySelector("audio").volume = 0.2;
-  }, [])
   let handleState = () => {
     if (loader === true) {
       return (
@@ -186,10 +184,7 @@ function App() {
   return (
     <div>
       {handleState()}
-      <audio style={{display: "none"}} controls autoplay>
-        <source src={bg} type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
+      <Music />
     </div>
   );
 }
