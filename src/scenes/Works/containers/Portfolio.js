@@ -11,8 +11,8 @@ function Portfolio(props) {
             </div>
             <div id="divProjectStatus" className="projectStatusContainer">
                 <div className="projectLinks">
-                    <h1><a href="">Repository</a></h1>
-                    <h1><a href="">Website</a></h1>
+                    <h1><a href="a">Repository</a></h1>
+                    <h1><a href="a">Website</a></h1>
                 </div>
                 <div className="projectStatus"><h1>(Status: Coming Soon)</h1></div>
             </div>

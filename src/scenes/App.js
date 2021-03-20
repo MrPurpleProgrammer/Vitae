@@ -14,6 +14,7 @@ import Mouse from '../components/Mouse/Mouse';
 import Music from '../components/Music/Music';
 function LoaderContent(props) {
   useEffect(() => {
+    $('.music i').show();
     setTimeout(() => {
       $('#divParentLoader').addClass('flickerOut');
       $('.topLoader').animate({ height: "45%" });
@@ -28,8 +29,10 @@ function LoaderContent(props) {
 
   let handleButtonClick = () => {
     $('.topLoader').animate({ height: "0%" });
+    $('#musicIcon').toggleClass('fa-volume-mute');
+    $('#musicIcon').toggleClass('fa-volume-up');
+    document.querySelector("audio").paused ? document.querySelector("audio").play() : document.querySelector("audio").pause();
     $('.bottomLoader').animate({ height: "0%" }, () => {
-      props.startMusic();
       props.loaderState(false);
     });
   }
@@ -38,15 +41,15 @@ function LoaderContent(props) {
       <div id="divTopHalf" className="topLoader"></div>
       <div id="divBottomHalf" className="bottomLoader"></div>
       <div id="divParentLoader" >
-        <div class="wrap">
-          <div class="angle"></div>
-          <div class="angle"></div>
-          <div class="angle"></div>
-          <div class="angle"></div>
+        <div className="wrap" style={navigator.platform == 'iPhone' ? {display: 'none'} : {display: 'block'}}>
+          <div className="angle"></div>
+          <div className="angle"></div>
+          <div className="angle"></div>
+          <div className="angle"></div>
         </div>
       </div>
-      <button class="btn-glitch-fill" onClick={() => { handleButtonClick() }}>
-        <span class="text">Initialize</span><span class="decoration">&rArr;</span>
+      <button className="btn-glitch-fill" onClick={() => { handleButtonClick() }}>
+        <span className="text">Enter</span><span className="decoration">&rArr;</span>
       </button>
       <svg id="svgLoader" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -57,7 +60,7 @@ function LoaderContent(props) {
           </filter>
         </defs>
       </svg>
-      <h1 id="loadingText" > Hold on, MrPurple is busy fixing climate change...</h1>
+      <h1 id="loadingText" > Hold on, I'm convincing the AI to not to take over the world...</h1>
       <h1 id="readyText"> We're ready for you, <span style={{ color: "#be7dff" }}>Click on the button above.</span> (Turn your volume up for the complete experience) </h1>
       <Mouse />
     </div>
@@ -176,7 +179,7 @@ function App() {
   let handleState = () => {
     if (loader === true) {
       return (
-        <LoaderContent loaderState={state => setLoaderState(state)} startMusic={() => {document.querySelector("audio").play()}}/>
+        <LoaderContent loaderState={state => setLoaderState(state)} startMusic={() => { document.querySelector("audio").play() }} />
       )
     }
     else return (<MainContent />)

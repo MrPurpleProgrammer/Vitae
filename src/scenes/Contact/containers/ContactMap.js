@@ -22,19 +22,33 @@ class ContactMap extends React.Component {
             zoom: this.state.zoom,
             trackResize: true,
             bearing: this.state.bearing,
-            interactive: true
+            interactive: $(window).width() > 850 ? true : false
         });
         setTimeout(() => {
-            map.flyTo({
-                center: [-118.1036, 33.5128],
-                bearing: -173.28203884901694,
-                pitch: 65,
-                zoom: 10.53,
-                speed: 0.7,
-                easing(t) {
-                    return 1 - Math.pow(1 - t, 5);
-                }
-            });
+            if($(window).width() > 850) {
+                map.flyTo({
+                    center: [-118.1036, 33.5128],
+                    bearing: -173.28203884901694,
+                    pitch: 65,
+                    zoom: 10.53,
+                    speed: 0.7,
+                    easing(t) {
+                        return 1 - Math.pow(1 - t, 5);
+                    }
+                });
+            }
+            else {
+                map.flyTo({
+                    center: [-117.9503, 33.5034],
+                    bearing: -173.28203884901694,
+                    pitch: 65,
+                    zoom: 10.53,
+                    speed: 0.7,
+                    easing(t) {
+                        return 1 - Math.pow(1 - t, 5);
+                    }
+                });
+            }
         }, 500);
         var marker = new mapboxgl.Marker({
             color: "#a984ce",
@@ -43,7 +57,12 @@ class ContactMap extends React.Component {
             .addTo(map);
         $('.contactMap').on("resize", map.resize());
         map.on('move', () => {
-            // access longitude and latitude values directly
+            console.log({
+                lng: map.getCenter().lng.toFixed(4),
+                lat: map.getCenter().lat.toFixed(4),
+                zoom: map.getZoom().toFixed(2),
+                bearing: map.getBearing(),
+            })
             this.setState({
                 lng: map.getCenter().lng.toFixed(4),
                 lat: map.getCenter().lat.toFixed(4),
