@@ -11,9 +11,9 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 ::-webkit-scrollbar {
-	width: 0px !important;
-	height: 0px !important;
-	background: transparent !important;
+	width: 0px;
+	height: 0px;
+	background: transparent;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

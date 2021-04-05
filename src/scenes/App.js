@@ -60,7 +60,7 @@ function LoaderContent(props) {
           </filter>
         </defs>
       </svg>
-      <h1 id="loadingText" > Hold on, I'm convincing the AI to not to take over the world...</h1>
+      <h1 id="loadingText" > Hold on, I'm busy inventing time travel and curing cancer...</h1> 
       <h1 id="readyText"> We're ready for you, <span style={{ color: "#be7dff" }}>Click on the button above.</span> (Turn your volume up for the complete experience) </h1>
       <Mouse />
     </div>

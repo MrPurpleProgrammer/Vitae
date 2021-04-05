@@ -11,7 +11,11 @@ const NavMenu = forwardRef((props, ref) => {
     const [menuState, setMenuState] = useState('initial');
     useImperativeHandle(ref, () => ({
         setNavLineState(contentState) {
-            if (contentState === 0 || contentState === 1) setMenuState('about');
+            if (contentState === 0 || contentState === 1) {
+                if (openState === false) $('.initialLogoState').css({ width: "100%" });
+                else {$('.initialLogoState').css({ width: "64%" })};
+                setMenuState('about');
+            }
             if (contentState === 2) setMenuState('works');
             if (contentState === 3) setMenuState('contact');
         }
@@ -37,12 +41,6 @@ const NavMenu = forwardRef((props, ref) => {
             }
         }
         else {
-            // $('#divMenu').attr('style', function (i, style) {
-            //     return style && style.replace(/display[^;]+;?/g, '');
-            // });
-            // $('#divInnerMenu').attr('style', function (i, style) {
-            //     return style && style.replace(/display[^;]+;?/g, '');
-            // });
             if (openState === false) {
                 $('#divInnerMenu').animate({ opacity: 0 }, () => {
                     $('#divMenu').animate({ width: "0%" });
@@ -82,13 +80,11 @@ const NavMenu = forwardRef((props, ref) => {
         window.addEventListener('resize', () => {
             let windowWidth = $(window).width();
             setWindowWidth(windowWidth);
-            if(windowWidth <= 1200) {
+            if (windowWidth <= 1200) {
                 $('#divMenu').css({ width: "0%" });
             }
-            else if(windowWidth > 1200 && windowWidth <= 1366) {
+            else if (windowWidth > 1200 && windowWidth <= 1366) {
                 $('#divMenu').css({ width: "120px" });
-            }
-            if (windowWidth < 1366) {
                 setOpenState(false)
             }
             else {

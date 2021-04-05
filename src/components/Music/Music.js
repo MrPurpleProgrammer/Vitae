@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 
 function Music(props) {
     useEffect(() => {
-        document.querySelector("audio").volume = 0.05;
+        document.querySelector("audio").volume = 0.2;
     }, [])
     let handleMusicToggle = () => {
         $('#musicIcon').toggleClass('fa-volume-mute');
@@ -13,7 +13,7 @@ function Music(props) {
     }
     return (
         <div className="music">
-            <audio style={{ display: "none" }} controls>
+            <audio style={{ display: "none" }} controls loop>
                 <source src={bg} type="audio/mpeg" />
                 Your browser does not support the audio element.
             </audio>

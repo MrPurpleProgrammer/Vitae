@@ -22,10 +22,22 @@ class ContactMap extends React.Component {
             zoom: this.state.zoom,
             trackResize: true,
             bearing: this.state.bearing,
-            interactive: $(window).width() > 850 ? true : false
+            interactive: $(window).width() > 850 ? true : true
         });
         setTimeout(() => {
-            if($(window).width() > 850) {
+            if($(window).height() < 850) {
+                map.flyTo({
+                    center: [-117.9748, 33.5362],
+                    bearing: -173.28203884901694,
+                    pitch: 65,
+                    zoom: 10.53,
+                    speed: 0.7,
+                    easing(t) {
+                        return 1 - Math.pow(1 - t, 5);
+                    }
+                })
+            }
+            else if($(window).width() > 850) {
                 map.flyTo({
                     center: [-118.1036, 33.5128],
                     bearing: -173.28203884901694,
