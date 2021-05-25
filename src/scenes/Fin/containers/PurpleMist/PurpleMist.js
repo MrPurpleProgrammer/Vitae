@@ -10,8 +10,8 @@ function PurpleMist() {
         SPACING = 3,
         MARGIN = 100,
         COLOR = 220,
-        DRAG = 0.89,
-        EASE = 0.28,
+        DRAG = 0.95,
+        EASE = 0.25,
 
         /*
         

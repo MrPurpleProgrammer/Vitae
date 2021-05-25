@@ -2102,6 +2102,7 @@ svg #wheel {
 		flex-flow: wrap;
 		font-family: ocr-a-std;
 		width: 700px;
+		height: 100%;
 		margin: auto;
 	}
 
@@ -2125,6 +2126,100 @@ svg #wheel {
 		cursor: pointer;
 		z-index: 100;
 	}
+
+	.treasureMapContainer {
+		margin: 0;
+		position: absolute;
+		top: 40%;
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+
+	.treasureMapContainer > p {
+		font-size: 14px !important;
+	}
+
+	.treasureMapContainer>h1 {
+		font-size: 24px;
+		text-align: center;
+		color: #b9b9b9;
+		line-height: 45px !important;
+	}
+	.treasurePrompt {
+		display: flex;
+		opacity: 0;
+		transform: translateY(40px) skew(-10deg, 0deg);
+		animation: fadeIn 1.5s ease 0.5s 1, textTransform 1.5s ease 0.5s 1;
+		animation-fill-mode: forwards;
+		flex-direction: column;
+		align-content: center;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		padding: 30px;
+		margin-top: 40px;
+		border-radius: 10px;
+		background: #2a333eb0;
+		width: 85%;
+		margin: auto;
+	}
+
+	.treasurePrompt > p:first-of-type {
+		font-size: 15px;
+		width: 60%;
+		margin: 0px;
+		color: #7c7d7c;
+		font-weight: 100;
+	}
+
+	.treasurePrompt > p {
+		font-size: 19px;
+		font-weight: bold;
+		color: #a9e3b0;
+	}
+	.treasurePrompt input {
+		color: #a9e3b0;
+		width: 59%;
+		height: 35px;
+		font-size: 18px;
+		text-align: center;
+		border-radius: 10px;
+		border: 2px solid #c3c31740;
+		background: #2a333e;
+	}
+
+	.incorrectInput {
+		border: 2px solid #c31717af !important;
+	}
+
+	.correctInput {
+		border: 2px solid #17c350af !important;
+	}
+
+	.treasurePrompt button {
+		background: #a8e2af;
+		margin-top: 15px;
+		width: 59%;
+		height: 44px;
+		border-radius: 8px;
+		color: #2d333b;
+		width: 60%;
+		height: 40px;
+		font-size: 18px;
+		text-align: center;
+		border-radius: 10px;
+	}
+
+	.treasurePrompt button:hover {
+		background: #92c598;
+	}
+
+	.favOptions:hover {
+		text-decoration: underline;
+		color: #74a57a;
+		cursor: pointer;
+	}
+	
 }
 
 @media only screen and (max-height: 850px) and (min-width: 851px) {
