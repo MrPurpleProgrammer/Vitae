@@ -760,29 +760,29 @@ skew to change the 'thickness' of the glitch.*/
 
 .workDetails {
 	display: none;
-    position: relative;
-    top: 5%;
-    flex-flow: wrap;
-    font-family: ocr-a-std;
-    width: 750px;
-    height: 85%;
-    margin: auto;
-    border: 7px solid #1e55b4;
-    overflow: hidden;
-    overflow-y: scroll;
+	position: relative;
+	top: 5%;
+	flex-flow: wrap;
+	font-family: ocr-a-std;
+	width: 750px;
+	height: 85%;
+	margin: auto;
+	border: 7px solid #1e55b4;
+	overflow: hidden;
+	overflow-y: scroll;
 }
 
 .workDetails::-webkit-scrollbar {
-    width: 5px;
-    height: 100%;
-    background-color: #4e4e4e;
-    border-radius: 20px;
-    position: absolute;
+	width: 5px;
+	height: 100%;
+	background-color: #4e4e4e;
+	border-radius: 20px;
+	position: absolute;
 }
 
 .workDetails::-webkit-scrollbar-thumb {
 	background-color: #be7dff;
-    border-radius: 20px;
+	border-radius: 20px;
 }
 
 .workDetails i {
@@ -799,20 +799,20 @@ skew to change the 'thickness' of the glitch.*/
 }
 
 .projectContent {
-    position: absolute;
-    top: 45px;
-    left: 95px;
-    width: 580px;
-    padding-bottom: 15px;
+	position: absolute;
+	top: 45px;
+	left: 95px;
+	width: 580px;
+	padding-bottom: 15px;
 }
 
 .projectContent > h1 {
-    font-size: 32px;
-    margin: 15px 0px;
-    color: #be7dff;
-    font-weight: 100;
-    width: -moz-fit-content;
-    width: 385px;
+	font-size: 32px;
+	margin: 15px 0px;
+	color: #be7dff;
+	font-weight: 100;
+	width: -moz-fit-content;
+	width: 385px;
 }
 
 .projectContent > p {
@@ -867,7 +867,7 @@ skew to change the 'thickness' of the glitch.*/
 	margin: 0px;
 }
 
-.projectLinks .inactive h1{
+.projectLinks .inactive h1 {
 	color: rgb(85, 85, 85) !important;
 }
 
@@ -880,57 +880,57 @@ skew to change the 'thickness' of the glitch.*/
 }
 
 .projectImageContainer {
-    width: inherit;
-    height: 200px;
-    display: flex;
-    overflow: hidden;
-    overflow-x: scroll;
-    padding-bottom: 8px;
+	width: inherit;
+	height: 200px;
+	display: flex;
+	overflow: hidden;
+	overflow-x: scroll;
+	padding-bottom: 8px;
 }
 
 .projectImageContainer::-webkit-scrollbar {
-    width: 5px !important;
-    height: 5px !important;
-    background: #4e4e4e !important;
-    border-radius: 15px;
+	width: 5px !important;
+	height: 5px !important;
+	background: #4e4e4e !important;
+	border-radius: 15px;
 }
 
 .projectImageContainer::-webkit-scrollbar-thumb {
-    background-color: #be7dff;
-    border-radius: 20px;
+	background-color: #be7dff;
+	border-radius: 20px;
 }
 
-.projectImageContainer>img {
+.projectImageContainer > img {
 	padding-right: 20px;
 }
 
 .projectLearnContainer {
-    width: inherit;
-    height: 200px;
-    display: flex;
-    overflow: hidden;
-    overflow-x: scroll;
-    padding-bottom: 8px;
+	width: inherit;
+	height: 200px;
+	display: flex;
+	overflow: hidden;
+	overflow-x: scroll;
+	padding-bottom: 8px;
 }
 
 .projectLearnContainer::-webkit-scrollbar {
-    width: 5px !important;
-    height: 5px !important;
-    background: #4e4e4e !important;
-    border-radius: 15px;
+	width: 5px !important;
+	height: 5px !important;
+	background: #4e4e4e !important;
+	border-radius: 15px;
 }
 
 .projectLearnContainer::-webkit-scrollbar-thumb {
-    background-color: #be7dff;
-    border-radius: 20px;
+	background-color: #be7dff;
+	border-radius: 20px;
 }
 
 .projectLearnContainer div {
-    border: 2px solid #4e4e4e;
-    height: 90%;
-    width: 300px;
-    border-radius: 8px;
-    margin-right: 20px;
+	border: 2px solid #4e4e4e;
+	height: 90%;
+	width: 300px;
+	border-radius: 8px;
+	margin-right: 20px;
 	text-align: center;
 }
 
@@ -938,20 +938,20 @@ skew to change the 'thickness' of the glitch.*/
 	height: 100%;
 }
 
-.projectLearnContainer>img {
+.projectLearnContainer > img {
 	padding-right: 20px;
 }
 
 .projectLearnContainer div p {
 	position: relative;
-    bottom: 32%;
-    padding: 10px;
-    background: #484848b5;
-    color: #c1c1c1;
-    font-family: 'ocr-a-std';
-    font-weight: 600;
-    font-size: 12px;
-    text-decoration: underline;
+	bottom: 32%;
+	padding: 10px;
+	background: #484848b5;
+	color: #c1c1c1;
+	font-family: "ocr-a-std";
+	font-weight: 600;
+	font-size: 12px;
+	text-decoration: underline;
 }
 
 .none {
@@ -1942,6 +1942,22 @@ svg #wheel {
 		background-color: #cebede;
 	}
 
+	._workItem {
+		height: 150px;
+		width: 155px;
+		border: solid 5px #1e55b4;
+		position: relative;
+		cursor: pointer;
+		opacity: 1;
+		border-radius: 5px;
+	}
+
+	._workItem:hover {
+		border: solid 5px #a883cd;
+		box-shadow: 0px 0px 100px #a883cd;
+		background-color: #cebede;
+	}
+
 	.illuminateDiv {
 		width: 100%;
 		height: 100%;
@@ -1952,7 +1968,7 @@ svg #wheel {
 
 	.illuminateDiv img {
 		height: inherit;
-    	opacity: 0.3;
+		opacity: 0.3;
 		display: none;
 	}
 
@@ -1961,6 +1977,11 @@ svg #wheel {
 	}
 
 	.workItem:hover p {
+		color: #a883cd;
+		text-shadow: #1e55b4;
+		animation: jitter_child infinite linear 2s alternate-reverse;
+	}
+	._workItem:hover p {
 		color: #a883cd;
 		text-shadow: #1e55b4;
 		animation: jitter_child infinite linear 2s alternate-reverse;
@@ -1990,6 +2011,16 @@ svg #wheel {
 	}
 
 	.workItem p {
+		position: relative;
+		margin: auto;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		left: 50%;
+		color: #7c7a7d;
+	}
+
+	._workItem p {
 		position: relative;
 		margin: auto;
 		position: absolute;
@@ -2062,6 +2093,37 @@ svg #wheel {
 		bottom: 0;
 		width: 100%;
 		height: 100%;
+	}
+
+	.stepFive {
+		display: block;
+		position: relative;
+		top: 10%;
+		flex-flow: wrap;
+		font-family: ocr-a-std;
+		width: 700px;
+		margin: auto;
+	}
+
+	.stepFive h1 {
+		font-size: 25px;
+		text-align: center;
+		color: #b9b9b9;
+	}
+	.stepFive p {
+		color: #9a7db7;
+		text-align: center;
+		line-height: 35px;
+	}
+
+	.purpleGamesContainer i {
+		position: absolute;
+		font-size: 45px;
+		top: 48%;
+		text-shadow: -5px 2px 3px #1e55b4;
+		color: #be7dff;
+		cursor: pointer;
+		z-index: 100;
 	}
 }
 
@@ -2171,6 +2233,37 @@ svg #wheel {
 		flex-flow: row wrap;
 		justify-content: flex-start;
 		align-content: flex-start;
+	}
+
+	.stepFive {
+		display: block;
+		position: relative;
+		top: 10%;
+		flex-flow: wrap;
+		font-family: ocr-a-std;
+		width: 700px;
+		margin: auto;
+	}
+
+	.stepFive h1 {
+		font-size: 25px;
+		text-align: center;
+		color: #b9b9b9;
+	}
+	.stepFive p {
+		color: #9a7db7;
+		text-align: center;
+		line-height: 35px;
+	}
+
+	.purpleGamesContainer i {
+		position: absolute;
+		font-size: 45px;
+		top: 48%;
+		text-shadow: -5px 2px 3px #1e55b4;
+		color: #be7dff;
+		cursor: pointer;
+		z-index: 100;
 	}
 }
 
@@ -2463,6 +2556,18 @@ svg #wheel {
 		flex: 0 0 auto;
 	}
 
+	._workItem {
+		height: 60vh;
+		width: 290px;
+		border: solid 5px #1e55b4;
+		position: relative;
+		cursor: pointer;
+		opacity: 1;
+		margin-right: 15px;
+		border-radius: 5px;
+		flex: 0 0 auto;
+	}
+
 	.filterList > div {
 		padding-right: 15px;
 		line-height: 0px;
@@ -2508,17 +2613,23 @@ svg #wheel {
 		background-color: #cebede;
 	}
 
+	._workItem:hover {
+		border: solid 5px #a883cd;
+		box-shadow: none;
+		background-color: #cebede;
+	}
+
 	.illuminateDiv {
 		width: 100%;
 		height: 100%;
 		display: flex;
-    justify-content: center;
-    overflow: hidden;
+		justify-content: center;
+		overflow: hidden;
 	}
 
 	.illuminateDiv img {
 		height: inherit;
-    opacity: 0.3;
+		opacity: 0.3;
 	}
 
 	.illuminateDiv:hover {
@@ -2526,6 +2637,12 @@ svg #wheel {
 	}
 
 	.workItem:hover p {
+		color: #a883cd;
+		text-shadow: #1e55b4;
+		animation: jitter_child infinite linear 2s alternate-reverse;
+	}
+
+	._workItem:hover p {
 		color: #a883cd;
 		text-shadow: #1e55b4;
 		animation: jitter_child infinite linear 2s alternate-reverse;
@@ -2555,6 +2672,16 @@ svg #wheel {
 	}
 
 	.workItem p {
+		position: relative;
+		margin: auto;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		left: 50%;
+		color: #7c7a7d;
+	}
+
+	._workItem p {
 		position: relative;
 		margin: auto;
 		position: absolute;
@@ -2630,6 +2757,37 @@ svg #wheel {
 		bottom: 0;
 		width: 100%;
 		height: 100%;
+	}
+
+	.stepFive {
+		display: block;
+		position: relative;
+		top: 10%;
+		flex-flow: wrap;
+		font-family: ocr-a-std;
+		width: 700px;
+		margin: auto;
+	}
+
+	.stepFive h1 {
+		font-size: 25px;
+		text-align: center;
+		color: #b9b9b9;
+	}
+	.stepFive p {
+		color: #9a7db7;
+		text-align: center;
+		line-height: 35px;
+	}
+
+	.purpleGamesContainer i {
+		position: absolute;
+		font-size: 45px;
+		top: 48%;
+		text-shadow: -5px 2px 3px #1e55b4;
+		color: #be7dff;
+		cursor: pointer;
+		z-index: 100;
 	}
 }
 
@@ -2793,5 +2951,36 @@ svg #wheel {
 		margin: auto;
 		position: relative;
 		display: block;
+	}
+
+	.stepFive {
+		display: block;
+		position: relative;
+		top: 10%;
+		flex-flow: wrap;
+		font-family: ocr-a-std;
+		width: 700px;
+		margin: auto;
+	}
+
+	.stepFive h1 {
+		font-size: 25px;
+		text-align: center;
+		color: #b9b9b9;
+	}
+	.stepFive p {
+		color: #9a7db7;
+		text-align: center;
+		line-height: 35px;
+	}
+
+	.purpleGamesContainer i {
+		position: absolute;
+		font-size: 45px;
+		top: 48%;
+		text-shadow: -5px 2px 3px #1e55b4;
+		color: #be7dff;
+		cursor: pointer;
+		z-index: 100;
 	}
 }

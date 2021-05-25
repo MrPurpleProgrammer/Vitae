@@ -4,6 +4,7 @@ import $ from 'jquery';
 mapboxgl.accessToken = process.env.REACT_APP_MAP_API_TOKEN;
 
 class ContactMap extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -15,6 +16,7 @@ class ContactMap extends React.Component {
         };
     }
     componentDidMount() {
+        this._isMounted = true;
         const map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mrpurple/ckjrpxuxd23s419l9qlhkpo96',
@@ -68,22 +70,26 @@ class ContactMap extends React.Component {
         }).setLngLat([-117.9047, 33.6638])
             .addTo(map);
         $('.contactMap').on("resize", map.resize());
-        map.on('move', () => {
-            console.log({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2),
-                bearing: map.getBearing(),
-            })
-            this.setState({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2),
-                bearing: map.getBearing(),
-            });
-        });
+        // map.on('move', () => {
+        //     console.log({
+        //         lng: map.getCenter().lng.toFixed(4),
+        //         lat: map.getCenter().lat.toFixed(4),
+        //         zoom: map.getZoom().toFixed(2),
+        //         bearing: map.getBearing(),
+        //     })
+        //     this.setState({
+        //         lng: map.getCenter().lng.toFixed(4),
+        //         lat: map.getCenter().lat.toFixed(4),
+        //         zoom: map.getZoom().toFixed(2),
+        //         bearing: map.getBearing(),
+        //     });
+        // });
         map.resize();
         map.scrollZoom.disable();
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     render() {

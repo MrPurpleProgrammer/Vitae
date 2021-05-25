@@ -18,6 +18,7 @@ const NavMenu = forwardRef((props, ref) => {
             }
             if (contentState === 2) setMenuState('works');
             if (contentState === 3) setMenuState('contact');
+            if(contentState === 4) setMenuState('fin')
         }
     }));
     let handleMenuCollapse = () => {
@@ -140,6 +141,15 @@ const NavMenu = forwardRef((props, ref) => {
             $('#divNavAbout').next('hr').animate({ width: "0%" });
             $('#divNavWorks').next('hr').animate({ width: "0%" });
             $('#divNavContact').next('hr').animate({ width: "100%" });
+            handleMenuCollapse();
+        }
+        if (menuState === 'fin') {
+            $('#divNavAbout span').css({ color: "#c4c417", textShadow: "none" });
+            $('#divNavWorks span').css({ color: "#c4c417", textShadow: "none" });
+            $('#divNavContact span').css({ color: "#c4c417", textShadow: "none" });
+            $('#divNavAbout').next('hr').animate({ width: "0%" });
+            $('#divNavWorks').next('hr').animate({ width: "0%" });
+            $('#divNavContact').next('hr').animate({ width: "0%" });
             handleMenuCollapse();
         }
     }, [menuState])

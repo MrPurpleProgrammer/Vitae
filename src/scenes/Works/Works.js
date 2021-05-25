@@ -103,10 +103,19 @@ function Works() {
         $('#divFilter div').on('click', (e, o) => {
             $('#divFilter div').removeClass('activeFilter');
             $('#' + e.currentTarget.id).addClass('activeFilter');
-            let domObjs = $('.workItem');
+            let domObjs = $('.workGrid>div');
             domObjs.each((i, each) => {
+                if(e.currentTarget.dataset.filter == 'all') {
+                    $(each).removeClass('_workItem').addClass('workItem');
+                }
+                else {
+                    $(each).removeClass('workItem').addClass('_workItem');
+                }
+            });
+            let _domObjs = $('._workItem')
+            _domObjs.each((i, each) => {
                 if(!$(each).data('filterTags').includes(e.currentTarget.dataset.filter)) {
-                    console.log($(each).data('filterTags').includes($(e).data('filter')), $(each).data('filterTags'))
+                    // console.log($(each).data('filterTags').includes($(e).data('filter')), $(each).data('filterTags'))
                     $(each).animate({width: "0px"}, () => {
                         $(each).hide();
                     })
