@@ -9,7 +9,7 @@ class PurpleLife extends Component {
         <div>
           <p> Credits to: <a className="url" href="https://github.com/audrium">Audrius Mečionis</a> </p>
           <h1>(This is Conways Game of Life, click the play button.)</h1>
-          <p id="hiddenTreasureKey" className="none">mrpurple.org/api/treasure_map/key/{"My Favorite Comic (no spaces or capital letters)"}?quote={"Type the quote given to you through my Favorite Comic."}&walletAddr={"Your Ethereum Wallet Address"}&name="{"Your Name/Pseudonymn"}"</p>
+          <p id="hiddenTreasureKey" className="none key2">mrpurple.org/api/treasure_map/key/{"My Favorite Comic (no spaces or capital letters)"}?quote={"Type the quote given to you through my Favorite Comic."}&walletAddr={"Your Ethereum Wallet Address"}&name="{"Your Name/Pseudonymn"}</p>
         </div>
         <Game />
       </div>

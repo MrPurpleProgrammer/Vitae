@@ -19,6 +19,7 @@ const NavMenu = forwardRef((props, ref) => {
             if (contentState === 2) setMenuState('works');
             if (contentState === 3) setMenuState('contact');
             if(contentState === 4) setMenuState('fin')
+            if(contentState === 5) setMenuState('treasure')
         }
     }));
     let handleMenuCollapse = () => {
@@ -75,6 +76,9 @@ const NavMenu = forwardRef((props, ref) => {
             window.scrollTo({ top: 6200, behaviour: 'smooth' });
             props.content(3);
             setMenuState('contact')
+        }
+        if(windowWidth < 1200) {
+            $('.burgerMenu').trigger('click');
         }
     }
     useEffect(() => {
@@ -144,12 +148,9 @@ const NavMenu = forwardRef((props, ref) => {
             handleMenuCollapse();
         }
         if (menuState === 'fin') {
-            $('#divNavAbout span').css({ color: "#c4c417", textShadow: "none" });
-            $('#divNavWorks span').css({ color: "#c4c417", textShadow: "none" });
-            $('#divNavContact span').css({ color: "#c4c417", textShadow: "none" });
-            $('#divNavAbout').next('hr').animate({ width: "0%" });
-            $('#divNavWorks').next('hr').animate({ width: "0%" });
-            $('#divNavContact').next('hr').animate({ width: "0%" });
+            handleMenuCollapse();
+        }
+        if (menuState === 'treasure') {
             handleMenuCollapse();
         }
     }, [menuState])

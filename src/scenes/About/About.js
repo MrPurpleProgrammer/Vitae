@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-
 function About() {
     let quoteAnimation = () => {
         var text = document.getElementById('pQuote');

@@ -1,0 +1,153 @@
+    let [counter, setCounter] = useState(1);
+    let [headerScrambler, setHeaderScrambler] = useState(null);
+    let [subHeaderScrambler, setSubHeaderScrambler] = useState(null);
+    let handleScramblerButton = (c) => {
+        let promptType = $('#pQuestion').html();
+        let answer = $('#divTreasurePrompt input').val().replace(/\s+/g, ' ').trim().toLowerCase();
+        if (promptType == questionOptions[0]) {
+            if (answer !== '') {
+                const header = document.querySelector('#h1FinTreasureMessage');
+                const subHeader = document.querySelector('#pFinTreasureMessage');
+                let headScram = new TextScramble(header);
+                let subScram = new TextScramble(subHeader);
+                if (answer == 'purple') {
+                    $('#divTreasurePrompt input').removeClass('incorrectInput').addClass('correctInput')
+                    nextText(headScram, headerPhrases, 2);
+                    nextText(subScram, subHeaderPhrases, 2);
+                }
+                else if (answer === '#be7dff' || answer === '#65318e') {
+                    $('#divTreasurePrompt input').removeClass('incorrectInput').addClass('correctInput')
+                    nextText(headScram, headerPhrases, 3);
+                    nextText(subScram, subHeaderPhrases, 3);
+                }
+                else {
+                    nextText(headScram, headerPhrases, 0);
+                    nextText(subScram, subHeaderPhrases, 0);
+                    $('#divTreasurePrompt input').val('');
+                    $('#divTreasurePrompt input').removeClass('correctInput').addClass('incorrectInput')
+                    $('#divTreasurePrompt input').prop('placeholder', 'Wrong answer try again.');
+                }
+            }
+        }
+        if (promptType == questionOptions[1]) {
+            if (answer !== '') {
+                const header = document.querySelector('#h1FinTreasureMessage');
+                const subHeader = document.querySelector('#pFinTreasureMessage');
+                let headScram = new TextScramble(header);
+                let subScram = new TextScramble(subHeader);
+                if (answer === 'freedom' || answer === 'all blue') {
+                    $('#divTreasurePrompt input').removeClass('incorrectInput').addClass('correctInput')
+                    nextText(headScram, headerPhrases, 4);
+                    nextText(subScram, subHeaderPhrases, 4);
+                }
+                else if (answer === 'treasure' || answer === 'manga') {
+                    $('#divTreasurePrompt input').removeClass('incorrectInput').addClass('correctInput')
+                    nextText(headScram, headerPhrases, 5);
+                    nextText(subScram, subHeaderPhrases, 5);
+                    $('#divTreasurePrompt input').val('');
+                    $('#divTreasurePrompt input').prop('placeholder', 'Close, heres an additional clue.');
+                }
+                else {
+                    nextText(headScram, headerPhrases, 0);
+                    nextText(subScram, subHeaderPhrases, 0);
+                    $('#divTreasurePrompt input').val('');
+                    $('#divTreasurePrompt input').removeClass('correctInput').addClass('incorrectInput')
+                    $('#divTreasurePrompt input').prop('placeholder', 'Wrong answer try again.');
+                }
+            }
+        }
+        if (promptType == questionOptions[2]) {
+            if (answer !== '') {
+                const header = document.querySelector('#h1FinTreasureMessage');
+                const subHeader = document.querySelector('#pFinTreasureMessage');
+                let headScram = new TextScramble(header);
+                let subScram = new TextScramble(subHeader);
+                if (answer === 'the egg' || answer === 'egg') {
+                    $('#divTreasurePrompt input').removeClass('incorrectInput').addClass('correctInput')
+                    nextText(headScram, headerPhrases, 6);
+                    nextText(subScram, subHeaderPhrases, 6);
+                }
+                else if (answer === 'everything') {
+                    $('#divTreasurePrompt input').removeClass('incorrectInput').addClass('correctInput')
+                    nextText(headScram, headerPhrases, 7);
+                    nextText(subScram, subHeaderPhrases, 7);
+                    $('#divTreasurePrompt input').val('');
+                    $('#divTreasurePrompt input').prop('placeholder', 'Close, heres an additional clue.');
+                }
+                else {
+                    nextText(headScram, headerPhrases, 0);
+                    nextText(subScram, subHeaderPhrases, 0);
+                    $('#divTreasurePrompt input').val('');
+                    $('#divTreasurePrompt input').removeClass('correctInput').addClass('incorrectInput')
+                    $('#divTreasurePrompt input').prop('placeholder', 'Wrong answer try again.');
+                }
+            }
+        }
+    }
+    let handleNextFavOption = () => {
+        const questionElm = document.querySelector('#pQuestion');
+        let questionScram = new TextScramble(questionElm);
+        if (counter === 0) {
+            $('#pTreasurePrompt').html('To get your first clue, you must answer the following question.');
+        }
+        if (counter === 1) {
+            $('#pTreasurePrompt').html('To recieve the quote, you must answer the following question.');
+        }
+        if (counter === 2) {
+            $('#pTreasurePrompt').html('To get the next clue, you must answer the following question.');
+        }
+        nextText(questionScram, questionOptions, counter);
+        let newCounter = (counter + 1) % questionOptions.length;
+        setCounter(newCounter);
+
+    }
+    const headerPhrases = [
+        "Looks like you're having some trouble",
+        'Treasure Map Protocol Initialized',
+        "Purple doesn't exist, its an illusion.",
+        'Look for the key, hidden in the forest',
+        'Inherited Will, The Destiny of the Age, and The Dreams of the People.',
+        'I don’t wanna conquer anything.',
+        'The Purple Oracle, will grant you the knowledge you seek.',
+        '“There is no one else,” I said. “In this universe, there’s just you and me.”'
+    ]
+    const subHeaderPhrases = [
+        "Here are some general tips, first explore the website completely. Click/Hover/Interact with everything you can. Think out of the box, infact, sometimes you need to think as if there was no box to begin with. Finally some of the answers to these questions wont nessecarily be found within this website. Try exploring some of my other apps within this domain.",
+        'Welcome Player, you have just discovered a digital treasure map. If you choose to follow this map, understand that you are about to embark on a journey that will test your wits and will through and through. However, I promise you, the treasure is definitely worth it.',
+        'When we see purple, we are actually experiencing a mix of red and blue light. Scientifically speaking, Purple is not a color because there is no beam of pure light or a specific wavelength that corresponds to the color purple. Therefore, when we see purple, the human eye doesnt really understand what its looking at and so creates a color to fill in the gap. I can only imagine what the Mantis Ray percieves when it sees Purple, with its "12 functioning" color receptors.',
+        '0x of 3858 will provide you the tools to navigate the ludi vitae, to load the key hidden in plain sight. However, the key requires the right question to be useful.',
+        'As long as people continue to pursue the meaning of Freedom, these things will never cease to be!',
+        "It's just that the person with the most Freedom on the Sea is the Pirate King.",
+        "The future is already here – it's just not evenly distributed. Therefore its not something we enter into, it's is something we create.",
+        'You stared blankly at me. “But all the people on earth...” “All you. Different incarnations of you.” “Wait. I’m everyone!?” “Now you’re getting it,” I said, with a congratulatory slap on the back. “I’m every human being who ever lived?” “Or who will ever live, yes.” “I’m Abraham Lincoln?” “And you’re John Wilkes Booth, too,” I added. “I’m Hitler?” You said, appalled. “And you’re the millions he killed.” “I’m Jesus?” “And you’re everyone who followed him.” You fell silent.'
+    ]
+    const questionOptions = [
+        "What is my favourite color?",
+        "What is the One Piece?",
+        "What is the universe?"
+    ]
+    const nextText = (obj, phrases, count) => {
+        obj.setText(phrases[count]);
+    }
+    useEffect(() => {
+        const header = document.querySelector('#h1FinTreasureMessage');
+        const subHeader = document.querySelector('#pFinTreasureMessage');
+        const question = document.querySelector('#pQuestion');
+        let headScram = new TextScramble(header);
+        let subScram = new TextScramble(subHeader);
+        let questionScram = new TextScramble(question);
+        setTimeout(() => {
+            nextText(headScram, headerPhrases, 1);
+            nextText(subScram, subHeaderPhrases, 1);
+            nextText(questionScram, questionOptions, 0);
+        }, 500);
+        $('#answer').on("keyup", (event) => {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                handleScramblerButton(counter);
+            }
+        });
+    }, [])

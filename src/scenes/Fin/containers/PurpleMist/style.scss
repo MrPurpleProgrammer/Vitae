@@ -21,8 +21,35 @@
     cursor: pointer;
 }
 
-canvas {
+.particles canvas {
     background: #ffffff00;
     position: relative;
     top: -90px;
+}
+
+@media only screen and (max-height: 850px) and (min-width: 851px) {
+    .particles {
+        height: 80vh !important;
+        margin-top: 15px;
+    }
+    
+    #particleContainer p {
+        color: #8a8a8a;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+    }
+    
+    #particleContainer h1 {
+        font-size: 13px;
+        text-align: center;
+        color: #8d8d8d;
+        line-height: 20px;
+    }
+    
+    .particles canvas {
+        background: #ffffff00;
+        position: relative;
+        top: -93px;
+    }
 }

@@ -13,6 +13,8 @@ export const loadPreset = preset => {
             return diehard(newWorld);
         case 'gliderGun':
             return gliderGun(newWorld);
+        case 'key':
+            return key(newWorld);
         default:
             return newWorld;
     }
@@ -112,40 +114,63 @@ const gliderGun = world => {
     world[6][1] = ALIVE;
     world[6][2] = ALIVE;
 
-    world[3][13] = ALIVE; 
+    world[3][13] = ALIVE;
     world[3][14] = ALIVE;
-    world[4][12] = ALIVE; 
+    world[4][12] = ALIVE;
     world[4][16] = ALIVE;
-    world[5][11] = ALIVE; 
+    world[5][11] = ALIVE;
     world[5][17] = ALIVE;
-    world[6][11] = ALIVE; 
+    world[6][11] = ALIVE;
     world[6][15] = ALIVE;
-    world[6][17] = ALIVE; 
+    world[6][17] = ALIVE;
     world[6][18] = ALIVE;
-    world[7][11] = ALIVE; 
+    world[7][11] = ALIVE;
     world[7][17] = ALIVE;
-    world[8][12] = ALIVE; 
+    world[8][12] = ALIVE;
     world[8][16] = ALIVE;
-    world[9][13] = ALIVE; 
+    world[9][13] = ALIVE;
     world[9][14] = ALIVE;
 
     world[1][25] = ALIVE;
-    world[2][23] = ALIVE; 
+    world[2][23] = ALIVE;
     world[2][25] = ALIVE;
-    world[3][21] = ALIVE; 
+    world[3][21] = ALIVE;
     world[3][22] = ALIVE;
-    world[4][21] = ALIVE; 
+    world[4][21] = ALIVE;
     world[4][22] = ALIVE;
-    world[5][21] = ALIVE; 
+    world[5][21] = ALIVE;
     world[5][22] = ALIVE;
-    world[6][23] = ALIVE; 
+    world[6][23] = ALIVE;
     world[6][25] = ALIVE;
     world[7][25] = ALIVE;
 
-    world[3][35] = ALIVE; 
+    world[3][35] = ALIVE;
     world[3][36] = ALIVE;
-    world[4][35] = ALIVE; 
+    world[4][35] = ALIVE;
     world[4][36] = ALIVE;
+
+    return world;
+}
+
+const key = world => {
+    let i = 0;
+    for (i = 0; i <= 39; i++) {
+        world[i][20] = ALIVE
+    }
+
+    world[20][17] = ALIVE;
+    world[21][17] = ALIVE;
+    world[19][16] = ALIVE;
+    world[22][16] = ALIVE;
+    world[20][15] = ALIVE;
+    world[21][15] = ALIVE;
+
+    world[20][23] = ALIVE;
+    world[21][23] = ALIVE;
+    world[19][24] = ALIVE;
+    world[22][24] = ALIVE;
+    world[20][25] = ALIVE;
+    world[21][25] = ALIVE;
 
     return world;
 }

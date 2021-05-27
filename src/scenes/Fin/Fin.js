@@ -6,7 +6,7 @@ import $ from 'jquery'
 import PurpleLife from "./containers/PurpleLife/PurpleLife";
 import TreasureMap from "./containers/TreasureMap/TreasureMap";
 
-function Fin() {
+function Fin(props) {
     let [gameState, setGameState] = useState(0)
     useEffect(() => {
         $("audio").animate({ volume: 0 }, 2000);
@@ -37,7 +37,6 @@ function Fin() {
             <div className="stepFive" style={{ display: 'none' }}>
                 <h1 id="h1FinMessageOne">Ok you can stop scrolling now, here play around with these toys...</h1>
                 <h1 id="h1FinMessageTwo" style={{ display: 'none' }}>Seriously, theres nothing down there, stop scrolling.</h1>
-                <TreasureMap />
                 <div id="divPurpleGames" className="purpleGamesContainer">
                     <i className="fas fa-chevron-left" onClick={() => { handleGameTransition("back") }}></i>
                     <div id="divGameContainer">

@@ -24,13 +24,13 @@ class ContactMap extends React.Component {
             zoom: this.state.zoom,
             trackResize: true,
             bearing: this.state.bearing,
-            interactive: $(window).width() > 850 ? true : true
+            interactive: $(window).width() > 850 ? true : false
         });
         setTimeout(() => {
             if($(window).height() < 850) {
                 map.flyTo({
-                    center: [-117.9748, 33.5362],
-                    bearing: -173.28203884901694,
+                    center: [-117.9550, 33.5035],
+                    bearing: -173.27820630660895,
                     pitch: 65,
                     zoom: 10.53,
                     speed: 0.7,
@@ -70,20 +70,20 @@ class ContactMap extends React.Component {
         }).setLngLat([-117.9047, 33.6638])
             .addTo(map);
         $('.contactMap').on("resize", map.resize());
-        // map.on('move', () => {
-        //     console.log({
-        //         lng: map.getCenter().lng.toFixed(4),
-        //         lat: map.getCenter().lat.toFixed(4),
-        //         zoom: map.getZoom().toFixed(2),
-        //         bearing: map.getBearing(),
-        //     })
-        //     this.setState({
-        //         lng: map.getCenter().lng.toFixed(4),
-        //         lat: map.getCenter().lat.toFixed(4),
-        //         zoom: map.getZoom().toFixed(2),
-        //         bearing: map.getBearing(),
-        //     });
-        // });
+        map.on('move', () => {
+            console.log({
+                lng: map.getCenter().lng.toFixed(4),
+                lat: map.getCenter().lat.toFixed(4),
+                zoom: map.getZoom().toFixed(2),
+                bearing: map.getBearing(),
+            })
+            this.setState({
+                lng: map.getCenter().lng.toFixed(4),
+                lat: map.getCenter().lat.toFixed(4),
+                zoom: map.getZoom().toFixed(2),
+                bearing: map.getBearing(),
+            });
+        });
         map.resize();
         map.scrollZoom.disable();
     }

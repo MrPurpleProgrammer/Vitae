@@ -3,9 +3,24 @@ import { forwardRef, useEffect, useState } from "react";
 import $ from 'jquery'
 import './style.scss'
 function PurpleMist() {
-    let ROWS = 170,
-        COLS = 170,
-        NUM_PARTICLES = (ROWS * COLS),
+    let ROWS, COLS;
+    if(window.innerHeight < 850) {
+        ROWS = 150;
+        COLS = 170;
+    }
+    if(window.innerWidth < 600) {
+        ROWS = 130;
+        COLS = 80;
+    }
+    if(window.innerHeight < 650 && window.innerWidth < 600) {
+        ROWS = 80;
+        COLS = 80;
+    }
+    if(window.innerHeight > 850 || window.innerWidth > 600) {
+        ROWS = 170;
+        COLS = 170;
+    }
+    let NUM_PARTICLES = (ROWS * COLS),
         THICKNESS = Math.pow( 80, 2 ),
         SPACING = 3,
         MARGIN = 100,
@@ -80,7 +95,13 @@ function PurpleMist() {
             my = e.clientY - bounds.top;
             man = true;
         });
-
+        container.addEventListener("touchmove", function (e) {
+            bounds = container.getBoundingClientRect();
+            console.log('touchmove')
+            mx = e.clientX - bounds.left;
+            my = e.clientY - bounds.top;
+            man = true;
+        });
         if (typeof Stats === "function") {
             document.body.appendChild((stats = new Stats()).domElement);
         }

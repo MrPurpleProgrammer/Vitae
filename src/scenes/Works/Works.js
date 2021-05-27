@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import $ from 'jquery'
 import Portfolio from './containers/Portfolio';
 import DMCT from './containers/DMCT';
-import QuantumSalesman from './containers/QuantumSalesman' 
-import MrPurple from './containers/MrPurple'
+import QuantumSalesman from './containers/QuantumSalesman'
+import MrPurple from './containers/Vitae'
 import { Route, Switch, useHistory } from "react-router-dom";
 import AnalyticsBuilder from "./containers/AnalyticsBuilder";
 import MicrositeBuilder from "./containers/MicrositeBuilder";
@@ -12,12 +12,24 @@ import MyParents from './containers/MyParents';
 import Varsun from "./containers/Varsun";
 import Proverp from "./containers/Proverp";
 import AQSPEC from "./containers/AQSPEC";
+import PortDashView from '../../assets/Works/Portfolio/Dashboard.png';
+import LighthouseDashView from '../../assets/Works/Lighthouse/Lighthouse_Dashboard.png';
+import QSHome from '../../assets/Works/Quantum_Salesman/QS_Home.png';
+import VitaeGameView from '../../assets/Works/Vitae/Vitae_Game.png';
+import PublicView from '../../assets/Works/AQSPEC/AQSPEC_Public.png'
+import ABMain from '../../assets/Works/Analytics_Builder/AB_Main.png';
+import DashView from '../../assets/Works/Microsite_Builder/MB_Dash.png';
+import VAHome from '../../assets/Works/Varsun/Varsun_Home.png';
+import PRHome from '../../assets/Works/Proverp/Proverp_Home.png';
+
 function Works() {
     const [filterState, setFilterState] = useState('all');
     const [projectDetail, setProjectDetail] = useState('none');
     let history = useHistory();
     let handleProjectTransition = (e) => {
         if (projectDetail == 'portfolio') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -25,6 +37,8 @@ function Works() {
             )
         }
         if (projectDetail == 'dmct') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -32,6 +46,8 @@ function Works() {
             )
         }
         if (projectDetail == 'qs') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -39,6 +55,8 @@ function Works() {
             )
         }
         if (projectDetail == 'cv') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -46,6 +64,8 @@ function Works() {
             )
         }
         if (projectDetail == 'mp') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -53,6 +73,8 @@ function Works() {
             )
         }
         if (projectDetail == 'ab') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -60,6 +82,8 @@ function Works() {
             )
         }
         if (projectDetail == 'mb') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -67,6 +91,8 @@ function Works() {
             )
         }
         if (projectDetail == 'lh') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -74,13 +100,17 @@ function Works() {
             )
         }
         if (projectDetail == 'var') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
-                <Varsun  />
+                <Varsun />
             )
         }
         if (projectDetail == 'proverp') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -88,6 +118,8 @@ function Works() {
             )
         }
         if (projectDetail == 'aqspec') {
+            $('.defaultLogoState').fadeOut(500);
+            $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
             setTimeout(() => { $('#divWorkDetails').fadeIn() }, 700)
             return (
@@ -95,8 +127,10 @@ function Works() {
             )
         }
         else {
+            $('#logoMrPurple').removeClass('glitch');
+            $('.navMenu').show();
             $('#divWorkDetails').fadeOut()
-            setTimeout(() => { $('.stepThree').fadeIn(); }, 700)
+            setTimeout(() => { $('.stepThree').fadeIn(); $('.defaultLogoState').show(); $('#logoMrPurple').addClass('glitchAfterWorkDetails'); }, 700)
         }
     }
     useEffect(() => {
@@ -105,7 +139,7 @@ function Works() {
             $('#' + e.currentTarget.id).addClass('activeFilter');
             let domObjs = $('.workGrid>div');
             domObjs.each((i, each) => {
-                if(e.currentTarget.dataset.filter == 'all') {
+                if (e.currentTarget.dataset.filter == 'all') {
                     $(each).removeClass('_workItem').addClass('workItem');
                 }
                 else {
@@ -114,14 +148,14 @@ function Works() {
             });
             let _domObjs = $('._workItem')
             _domObjs.each((i, each) => {
-                if(!$(each).data('filterTags').includes(e.currentTarget.dataset.filter)) {
+                if (!$(each).data('filterTags').includes(e.currentTarget.dataset.filter)) {
                     // console.log($(each).data('filterTags').includes($(e).data('filter')), $(each).data('filterTags'))
-                    $(each).animate({width: "0px"}, () => {
+                    $(each).animate({ width: "0px" }, () => {
                         $(each).hide();
                     })
                 }
                 else {
-                    $(each).show().animate({width: "155px"});
+                    $(each).show().animate({ width: "155px" });
                 }
             })
         });
@@ -130,11 +164,18 @@ function Works() {
         $('#divFilterAll').click();
     }, [])
     useEffect(() => {
+        return (() => {
+            $('.navMenu').show();
+            $('.defaultLogoState').show();
+        }
+        )
+    })
+    useEffect(() => {
         handleProjectTransition();
     }, [projectDetail]);
     return (
         <div id="divWorksContent" className="contentView">
-            <div className="stepThree" style={{display: 'none'}}>
+            <div className="stepThree" style={{ display: 'none' }}>
                 <h1>My Experience so far...</h1>
                 <div id="divFilter" className="filterList">
                     <div id="divFilterAll" data-filter="all">
@@ -163,52 +204,124 @@ function Works() {
                     <div id="divWork_Portfolio" data-filter-tags={["web", "dapp", "ui", "mobile", "all"]} className="workItem" data-work="portfolio">
                         <div className="illuminateDiv">
                         </div>
-                        <p>Portfolio</p>
+                        <div className="workInfo">
+                            <p className="workTitle">Portfolio</p>
+                            <p className="workDescription">An Ethereum based decentralized application(dApp) utilizing the DMCT tech stack and some google machine vision to create non fungible tokens when a user uploads unique media files... </p>
+                            <div className="workImages">
+                                <img src={PortDashView} />
+                            </div>
+                        </div>
                     </div>
                     <div id="divWork_DMCT" data-filter-tags={["dapp", "all"]} className="workItem" data-work="dmct">
                         <div className="illuminateDiv"></div>
-                        <p>DMCT</p>
+                        <div className="workInfo">
+                            <p className="workTitle">DMCT</p>
+                            <p className="workDescription">DMCT stands for Digital Media Copyright Token, the premise behind this protocol is to generate digital copyright NFT’s that can identify ownership of a media file on the internet... </p>
+                            <div className="projectLearnContainer" style={{ height: "145px", marginTop: "15px" }}>
+                                <div>
+                                    <a target="_blank" href="https://ethereum.org/en/nft/">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/NFT_Icon.png/220px-NFT_Icon.png" />
+                                        <p>Learn More About NFT's</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="divWork_Portfolio" data-filter-tags={["web", "mobile", "ui", "vis", "all"]} className="workItem" data-work="lh">
+                    <div id="divWork_Lighthouse" data-filter-tags={["web", "mobile", "ui", "vis", "all"]} className="workItem" data-work="lh">
                         <div className="illuminateDiv"></div>
-                        <p>Ligthouse</p>
+                        <div className="workInfo">
+                            <p className="workTitle">Lighthouse</p>
+                            <p className="workDescription">Lighthouse is a enterprise analytics tool, designed specifically for predictive and presprictive maintenance of manufacturing machinery. The general idea is to utilize machine learning... </p>
+                            <div className="workImages">
+                                <img src={LighthouseDashView} />
+                            </div>
+                        </div>
                     </div>
-                    <div id="divWork_Portfolio" data-filter-tags={["web", "vis", "all"]} className="workItem" data-work="qs">
+                    <div id="divWork_QS" data-filter-tags={["web", "vis", "all"]} className="workItem" data-work="qs">
                         <div className="illuminateDiv"></div>
-                        <p>Quantum Salesman</p>
+                        <div className="workInfo">
+                            <p className="workTitle">Quantum Salesman</p>
+                            <p className="workDescription">A proof of concept logistics app that solves the traveling salesman problem utilizing IBM’s QISKIT framework. Qiskit provides developers access to IBM’s quantum computer... </p>
+                            <div className="workImages">
+                                <img src={QSHome} />
+                            </div>
+                        </div>
                     </div>
-                    <div id="divWork_Portfolio" data-filter-tags={["web", "ui", "all"]} className="workItem" data-work="cv">
+                    <div id="divWork_Vitae" data-filter-tags={["web", "ui", "all"]} className="workItem" data-work="cv">
                         <div className="illuminateDiv"></div>
-                        <p>MrPurple</p>
+                        <div className="workInfo">
+                            <p className="workTitle">Vitae</p>
+                            <p className="workDescription">This website is designed primarily using ReactJs and a whole lot of SCSS animations. Alot of the color schemes and design has inspirations from various portfolio websites... </p>
+                            <div className="workImages">
+                                <img src={VitaeGameView} style={{ border: "1px solid #484848" }} />
+                            </div>
+                        </div>
                     </div>
-                    <div id="divWork_Portfolio" data-filter-tags={["web", "mobile", "ui", "all"]} className="workItem" data-work="mp">
+                    <div id="divWork_MyParents" data-filter-tags={["web", "mobile", "ui", "all"]} className="workItem" data-work="mp">
                         <div className="illuminateDiv"></div>
-                        <p>myParents</p>
+                        <div className="workInfo">
+                            <p className="workTitle">MyParents</p>
+                            <p className="workDescription">A mobile application designed to connect caretakers with the elderly or sick, and allow high level communication and scheduling. The vision behind this tool was to connect... </p>
+                            <div className="projectLearnContainer" style={{ height: "145px", marginTop: "15px" }}>
+                                <div style={{ width: "100%" }}>
+                                    <p style={{ bottom: "-30%" }}>Proprietary product, cannot disclose any screenshots or any further information</p>
+                                </div>
+                            </div>
+                        </div>                    </div>
+                    <div id="divWork_AQSPEC" data-filter-tags={["web", "ui", "vis", "all"]} className="workItem" data-work="aqspec">
+                        <div className="illuminateDiv"></div>
+                        <div className="workInfo">
+                            <p className="workTitle">AQSPEC</p>
+                            <p className="workDescription">A Sensor Analytics platform for tracking air quality and pollutant metrics for SCAQMD (South Coast Air Quality Management District). This tool utilizes ARCGIS, Highcharts and... </p>
+                            <div className="workImages">
+                                <img src={PublicView} />
+                            </div>
+                        </div>
                     </div>
-                    <div id="divWork_Portfolio" data-filter-tags={["web", "ui", "vis", "all"]} className="workItem" data-work="aqspec">
+                    <div id="divWork_AB" data-filter-tags={["web", "vis", "all"]} className="workItem" data-work="ab">
                         <div className="illuminateDiv"></div>
-                        <p>AQSPEC</p>
+                        <div className="workInfo">
+                            <p className="workTitle">Analytics Builder</p>
+                            <p className="workDescription">A Varsun enterprise suite tool, that I primarily developed, to allow users to design charts and graphs for various kinds of data visualization use cases. The tool utilizes vanilla... </p>
+                            <div className="workImages">
+                                <img src={ABMain} />
+                            </div>
+                        </div>
                     </div>
-                    <div id="divWork_Portfolio" data-filter-tags={["web", "vis", "all"]} className="workItem" data-work="ab">
+                    <div id="divWork_MB" data-filter-tags={["web", 'vis', "all"]} className="workItem" data-work="mb">
                         <div className="illuminateDiv"></div>
-                        <p>Analytics Builder</p>
+                        <div className="workInfo">
+                            <p className="workTitle">Microsite Builder</p>
+                            <p className="workDescription">A Varsun enterprise tool, that I developed, so generic users with minimal expertise in html, css and javascript can design and link various dashboards and microsites across their... </p>
+                            <div className="workImages">
+                                <img src={DashView} />
+                            </div>
+                        </div>
                     </div>
-                    <div id="divWork_Portfolio" data-filter-tags={["web", 'vis', "all"]} className="workItem" data-work="mb">
+                    <div id="divWork_Varsun" data-filter-tags={["web", "ms", "ui", "all"]} className="workItem" data-work="var">
                         <div className="illuminateDiv"></div>
-                        <p>Microsite Builder</p>
+                        <div className="workInfo">
+                            <p className="workTitle">Varsun</p>
+                            <p className="workDescription">Redesigned the company website and completely revamped marketing content. The previous company website was a legacy website with very outdated and innacurate content. Utilizing newer... </p>
+                            <div className="workImages">
+                                <img src={VAHome} />
+                            </div>
+                        </div>
                     </div>
-                    <div id="divWork_Portfolio" data-filter-tags={["web", "ms", "ui", "all"]} className="workItem" data-work="var">
+                    <div id="divWork_Proverp" data-filter-tags={["web", "ms", "ui", "all"]} className="workItem" data-work="proverp">
                         <div className="illuminateDiv"></div>
-                        <p>Varsun</p>
-                    </div>
-                    <div id="divWork_Portfolio" data-filter-tags={["web", "ms", "ui", "all"]} className="workItem" data-work="proverp">
-                        <div className="illuminateDiv"></div>
-                        <p>Proverp</p>
+                        <div className="workInfo">
+                            <p className="workTitle">Proverp</p>
+                            <p className="workDescription">Redesigned the company product website with updated marketing content and cleaner UI/UX. Improved search engine optimization for website, improved sales and lead management pipelining... </p>
+                            <div className="workImages">
+                                <img src={PRHome} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="divWorkDetails" className="workDetails">
-                <i className="fas fa-arrow-left" onClick={() => {setProjectDetail('none')}}></i>
+                <i className="fas fa-arrow-left" onClick={() => { setProjectDetail('none') }}></i>
                 {handleProjectTransition()}
             </div>
         </div>

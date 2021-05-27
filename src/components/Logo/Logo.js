@@ -23,8 +23,8 @@ function Logo(props) {
         <div id="divLogo" className={className}>
             <div id="divLogoContainer" onClick={() => { handleClick() }}>
                 {h1()}
-                <div id="blueLight" className="none"> Look for the key hidden in plain sight.</div>
-                <div id="blueLight" className="none"> The 0x of 3858 will provide you the tools to navigate to the "vita" in search of the key that will unlock the next clue.</div>
+                <div id="redLight" className="none"> Look for the key hidden in the forest.</div>
+                <div id="blueLight" className="none">0x of 3858 will provide you the tools to navigate the ludi vitae, to uncover the key hidden in plain sight. However, the key requires the right question to be useful.</div>
             </div>
         </div>
     )

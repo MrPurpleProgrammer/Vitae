@@ -21,6 +21,12 @@ function Mouse(props) {
             cursor.style.left = e.pageX + "px";
         });
 
+        document.addEventListener("touchmove", (e) => {
+            cursor.style.display = "block";
+            cursor.style.top = e.pageY + "px";
+            cursor.style.left = e.pageX + "px";
+        });
+
         document.addEventListener("scroll", (e) => {
             cursor.style.display = "none";
         });

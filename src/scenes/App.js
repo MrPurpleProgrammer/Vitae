@@ -14,6 +14,7 @@ import Mouse from '../components/Mouse/Mouse';
 import Music from '../components/Music/Music';
 import Fin from './Fin/Fin'
 import ImportScript from "../hooks/ImportScript"
+import TreasureMap from './Fin/containers/TreasureMap/TreasureMap';
 function LoaderContent(props) {
   useEffect(() => {
     $('.music i').show();
@@ -104,7 +105,6 @@ function MainContent() {
       }
     }
     else if (pos >= 80 && pos < 90 && contentState !== 4) {
-      $('#divFinTreasureMap').hide();
       $('#h1FinMessageTwo').hide();
       $('#h1FinMessageOne').fadeIn();
       $('#divPurpleGames').fadeIn();
@@ -118,18 +118,22 @@ function MainContent() {
       }
     }
     else if (pos >= 90 && pos < 98) {
-      $('#divFinTreasureMap').hide();
       $('#h1FinMessageOne').fadeOut(200, () => {
         $('#h1FinMessageTwo').fadeIn();
         $('#divPurpleGames').fadeIn();
       })
     }
     else if (pos >= 98 && pos < 101) {
-      $('#divPurpleGames').fadeOut(200, () => {
-        $('#h1FinMessageTwo').fadeOut(200, () => {
-          $('#divFinTreasureMap').fadeIn();
+      if ($('#divFinContent').length === 0) {
+        setContentState(5);
+      }
+      else {
+        $('#divPurpleGames').fadeOut(200, () => {
+          $('#h1FinMessageTwo').fadeOut(200, () => {
+            setContentState(5);
+          })
         })
-      })
+      }
     }
     if (pos === 0) { $('.progressLine').fadeOut(); }
     else { $('.progressLine').show().height(pos + '%') }
@@ -169,6 +173,10 @@ function MainContent() {
       $('.stepFive').fadeIn();
       $('.scrollDownLogo').fadeOut();
     }
+    if (contentState === 5) {
+      $('.stepSix').fadeIn();
+      $('.scrollDownLogo').fadeOut();
+    }
   }
   let content = () => {
     if (contentState === 0 || contentState === 1) {
@@ -191,13 +199,24 @@ function MainContent() {
         <Fin />
       )
     }
+    else if (contentState === 5) {
+      return (
+        <TreasureMap />
+      )
+    }
   }
   let handleLogoTransition = () => {
     if (scrollPos >= 10 || contentState === 1 || contentState === 2 || contentState === 3 || contentState === 4) {
       $('#divLogo').addClass('defaultLogoState').removeClass('initialLogoState');
     }
     if (scrollPos < 10 || contentState === 0) {
-      $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
+      if ($('.glitchAfterWorkDetails').length > 0) {
+        $('#logoMrPurple').removeClass('glitchAfterWorkDetails').addClass('glitch');
+        $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
+      }
+      else {
+        $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
+      }
     }
   }
   useEffect(() => {
@@ -238,10 +257,6 @@ function App() {
     }
     else return (<MainContent />)
   }
-  ImportScript('https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js', false);
-  ImportScript('https://gist.github.com/mrdoob/838785/raw/a19a753b441d6ad41707c58f06dbe17f3470423c/RequestAnimationFrame.js', false);
-  ImportScript('https://raw.github.com/mrdoob/stats.js/master/build/stats.min.js', false);
-  ImportScript('https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-deca44c3-547b-e00b-b654-fb3b4f90c95a', false);
   return (
     <div>
       {handleState()}
