@@ -17,9 +17,10 @@ import TreasureMap from './Fin/containers/TreasureMap/TreasureMap';
 function LoaderContent(props) {
   useEffect(() => {
     $('.music i').show();
-    navigator.__defineGetter__('platform', function () {
-      return 'iPhone' // customized user agent
-    });
+    //For Testing Iphone Device Configs
+    // navigator.__defineGetter__('platform', function () {
+    //   return 'iPhone' // customized user agent
+    // });
     setTimeout(() => {
       $('#divParentLoader').addClass('flickerOut');
       $('.topLoader').animate({ height: "45%" });
@@ -46,7 +47,7 @@ function LoaderContent(props) {
       <div id="divTopHalf" className="topLoader"></div>
       <div id="divBottomHalf" className="bottomLoader"></div>
       <div id="divParentLoader" >
-        <div className="wrap" style={navigator.platform == 'iPhone' ? { display: 'none' } : { display: 'block' }}>
+        <div className="wrap" style={navigator.platform === 'iPhone' ? { display: 'none' } : { display: 'block' }}>
           <div className="angle"></div>
           <div className="angle"></div>
           <div className="angle"></div>
@@ -212,7 +213,7 @@ function MainContent() {
       $('#divLogo').addClass('defaultLogoState').removeClass('initialLogoState');
     }
     if (scrollPos < 10 || contentState === 0) {
-      if (navigator.platform == 'iPhone') {
+      if (navigator.platform === 'iPhone') {
         if ($('.glitch-iphone-AfterWorkDetails').length > 0) {
           $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
           $('#logoMrPurple').removeClass('glitch-iphone-AfterWorkDetails').addClass('glitch-iphone');

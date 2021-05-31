@@ -1,6 +1,4 @@
-import $ from 'jquery'
-import { useEffect, useState } from 'react'
-import scrollSvg from '../../assets/ScrollDown.svg'
+import { useEffect } from 'react'
 function ScrollDown(props) {
     useEffect(() => {
     }, [])

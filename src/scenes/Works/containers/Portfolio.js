@@ -8,7 +8,7 @@ function Portfolio(props) {
         <div className="projectContainer">
             <div id="divProjectStatus" className="projectStatusContainer">
                 <div className="projectLinks">
-                    <a target="_blank" href="https://github.com/MrPurpleProgrammer/Portfolio"><h1>Repository</h1></a>
+                    <a target="_blank" rel="noreferrer" href="https://github.com/MrPurpleProgrammer/Portfolio"><h1>Repository</h1></a>
                     <a className="inactive"><h1>Website</h1></a>
                 </div>
                 <div className="projectStatus"><h1>(Status: Coming Soon)</h1></div>
@@ -21,10 +21,10 @@ function Portfolio(props) {
                     <p>HTML, CSS, SCSS, ReactJs, NodeJs, ExpressJs, Web3Js, MERN, MongoDB, Mongoose, Solidity, Metamask, Truffle, Google Vision, IPFS, Web Crawlers, Git, GitHub</p>
                 </div>
                 <div className="projectImageContainer">
-                    <img src={PortDashView} />
-                    <img src={PortMediaView} />
-                    <img src={PortPublicView} />
-                    <img src={PortLoginView} />
+                    <img alt="" src={PortDashView} />
+                    <img alt="" src={PortMediaView} />
+                    <img alt="" src={PortPublicView} />
+                    <img alt="" src={PortLoginView} />
                 </div>
             </div>
         </div>

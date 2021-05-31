@@ -4,13 +4,13 @@ let [counter, setCounter] = useState(1);
     let handleScramblerButton = (c) => {
         let promptType = $('#pQuestion').html();
         let answer = $('#divTreasurePrompt input').val().replace(/\s+/g, ' ').trim().toLowerCase();
-        if (promptType == questionOptions[0]) {
+        if (promptType === questionOptions[0]) {
             if (answer !== '') {
                 const header = document.querySelector('#h1FinTreasureMessage');
                 const subHeader = document.querySelector('#pFinTreasureMessage');
                 let headScram = new TextScramble(header);
                 let subScram = new TextScramble(subHeader);
-                if (answer == 'purple') {
+                if (answer === 'purple') {
                     $('#divTreasurePrompt input').removeClass('incorrectInput').addClass('correctInput')
                     nextText(headScram, headerPhrases, 2);
                     nextText(subScram, subHeaderPhrases, 2);
@@ -29,7 +29,7 @@ let [counter, setCounter] = useState(1);
                 }
             }
         }
-        if (promptType == questionOptions[1]) {
+        if (promptType === questionOptions[1]) {
             if (answer !== '') {
                 const header = document.querySelector('#h1FinTreasureMessage');
                 const subHeader = document.querySelector('#pFinTreasureMessage');
@@ -56,7 +56,7 @@ let [counter, setCounter] = useState(1);
                 }
             }
         }
-        if (promptType == questionOptions[2]) {
+        if (promptType === questionOptions[2]) {
             if (answer !== '') {
                 const header = document.querySelector('#h1FinTreasureMessage');
                 const subHeader = document.querySelector('#pFinTreasureMessage');

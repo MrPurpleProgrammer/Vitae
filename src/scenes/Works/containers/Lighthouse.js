@@ -20,9 +20,9 @@ function Lighthouse(props) {
                     <p>HTML, CSS, SCSS, ReactJs, NodeJs, ExpressJs, MYSQL, SQL Server, Sequelize, Python, Amazon RDS, Tensorflow, sklearn, Highcharts, Git, Github, NPM</p>
                 </div>
                 <div className="projectImageContainer">
-                    <img src={LighthouseDashView} />
-                    <img src={LighthouseDeviceView} />
-                    <img src={LighthouseHomeView} />
+                    <img alt="" src={LighthouseDashView} />
+                    <img alt="" src={LighthouseDeviceView} />
+                    <img alt="" src={LighthouseHomeView} />
                 </div>
             </div>
         </div>

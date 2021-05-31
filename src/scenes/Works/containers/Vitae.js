@@ -22,11 +22,11 @@ function MrPurple(props) {
                     <p>HTML, SCSS, ReactJs, CSS Animation, JQuery, Google Cloud, NPM, Git, Github, Responsive Design</p>
                 </div>
                 <div className="projectImageContainer">
-                    <img src={VitaeLoaderView} />
-                    <img src={VitaeHomeView} />
-                    <img src={VitaeGameView} />
-                    <img src={VitaeContact} />
-                    <img src={VitaeTreasureView} />
+                    <img alt="" src={VitaeLoaderView} />
+                    <img alt="" src={VitaeHomeView} />
+                    <img alt="" src={VitaeGameView} />
+                    <img alt="" src={VitaeContact} />
+                    <img alt="" src={VitaeTreasureView} />
                 </div>
             </div>
         </div>

@@ -17,26 +17,26 @@ function DMCT(props) {
                 </div>
                 <div className="projectLearnContainer">
                     <div>
-                        <a target="_blank" href="https://ethereum.org/en/nft/">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/NFT_Icon.png/220px-NFT_Icon.png" />
+                        <a target="_blank" rel="noreferrer" href="https://ethereum.org/en/nft/">
+                            <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/NFT_Icon.png/220px-NFT_Icon.png" />
                             <p>Learn More About NFT's</p>
                         </a>
                     </div>
                     <div>
-                        <a target="_blank" href="https://ethereum.org/en/">
-                            <img src="https://ethereum.org/static/0453c88b09ddaa2c7e7552840c650ad2/2a4de/finance_transparent.png" />
+                        <a target="_blank" rel="noreferrer" href="https://ethereum.org/en/">
+                            <img alt="" src="https://ethereum.org/static/0453c88b09ddaa2c7e7552840c650ad2/2a4de/finance_transparent.png" />
                             <p>Learn More About Etherum</p>
                         </a>
                     </div>
                     <div>
-                        <a target="_blank" href="https://www.phash.org/">
-                            <img src="https://camo.githubusercontent.com/9af677474dc6d8f64efb5f50e22fc5e88236ff5a531bba89f8dc19d544874909/68747470733a2f2f6a656e737365676572732e636f6d2f7374617469632f6d656469612f66696e6765727072696e742e706e67" />
+                        <a target="_blank" rel="noreferrer" href="https://www.phash.org/">
+                            <img alt="" src="https://camo.githubusercontent.com/9af677474dc6d8f64efb5f50e22fc5e88236ff5a531bba89f8dc19d544874909/68747470733a2f2f6a656e737365676572732e636f6d2f7374617469632f6d656469612f66696e6765727072696e742e706e67" />
                             <p>Learn More About PHASH</p>
                         </a>
                     </div>
                     <div>
-                        <a target="_blank" href="https://docs.soliditylang.org/en/v0.8.3/">
-                            <img src="https://pbs.twimg.com/profile_images/1240311693177167892/-5a2yoQp_400x400.jpg" />
+                        <a target="_blank" rel="noreferrer" href="https://docs.soliditylang.org/en/v0.8.3/">
+                            <img alt="" src="https://pbs.twimg.com/profile_images/1240311693177167892/-5a2yoQp_400x400.jpg" />
                             <p>Learn More About Solidity</p>
                         </a>
                     </div>

@@ -110,7 +110,7 @@ const NavMenu = forwardRef((props, ref) => {
         $('#divNavContact').next('hr').animate({ width: "0%" });
     }, [])
     useEffect(() => {
-        if(navigator.platform === 'iPhone') $('.burgerMenu').toggleClass('opened');
+        if(navigator.platform === 'iPhone') $('.burgerMenu-iphone').toggleClass('opened');
         else {
             $('.burgerMenu').toggleClass('opened');
         }

@@ -16,13 +16,13 @@ function Fin(props) {
         else if (gameState < 0) {
             setGameState(2);
         }
-        else if (gameState == 0) {
+        else if (gameState === 0) {
             return (<PurplePiano />)
         }
-        else if (gameState == 1) {
+        else if (gameState === 1) {
             return (<PurpleMist />)
         }
-        else if (gameState == 2) {
+        else if (gameState === 2) {
             return (<PurpleLife />)
         }
     }

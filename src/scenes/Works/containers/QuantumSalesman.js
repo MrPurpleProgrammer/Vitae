@@ -6,8 +6,8 @@ function QuantumSalesman(props) {
         <div className="projectContainer">
             <div id="divProjectStatus" className="projectStatusContainer">
                 <div className="projectLinks">
-                    <a target="_blank" href="https://github.com/MrPurpleProgrammer/Quantum-Salesman"><h1>Repository</h1></a>
-                    <a target="_blank" href="https://qs.mrpurple.org"><h1>Website</h1></a>
+                    <a target="_blank" rel="noreferrer" href="https://github.com/MrPurpleProgrammer/Quantum-Salesman"><h1>Repository</h1></a>
+                    <a target="_blank" rel="noreferrer" href="https://qs.mrpurple.org"><h1>Website</h1></a>
                 </div>
                 <div className="projectStatus"><h1>(Status: Online)</h1></div>
             </div>
@@ -20,13 +20,13 @@ function QuantumSalesman(props) {
                 </div>
                 <div className="projectLearnContainer">
                     <div>
-                        <a target="_blank" href="https://qiskit.org/">
-                            <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F52772988%2F253573767630%2F1%2Foriginal.jpg?auto=compress&s=202521af6b6f3033b335dea470079d93" />
+                        <a target="_blank" rel="noreferrer" href="https://qiskit.org/">
+                            <img alt="" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F52772988%2F253573767630%2F1%2Foriginal.jpg?auto=compress&s=202521af6b6f3033b335dea470079d93" />
                             <p>Learn More About QISKIT</p>
                         </a>
                     </div>
-                    <img src={QSHome} />
-                    <img src={QSMobile} />
+                    <img alt="" src={QSHome} />
+                    <img alt="" src={QSMobile} />
                 </div>
             </div>
         </div>

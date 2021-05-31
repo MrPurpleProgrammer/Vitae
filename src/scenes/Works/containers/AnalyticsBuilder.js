@@ -19,8 +19,8 @@ function AnalyticsBuilder(props) {
                     <p>HTML, CSS, Javascript, Jquery, Jsrender, .Net, Highcharts, SVN</p>
                 </div>
                 <div className="projectImageContainer">
-                    <img src={ABMain} />
-                    <img src={ABResult} />
+                    <img alt="" src={ABMain} />
+                    <img alt="" src={ABResult} />
                 </div>
             </div>
         </div>

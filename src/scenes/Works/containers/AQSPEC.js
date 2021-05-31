@@ -21,10 +21,10 @@ function AQSPEC(props) {
                     <p>HTML5, Javascript, Jquery, CSS3, Bootstrap, Highcharts, ARCGIS, SVN, JSRender, .NET, MVC Framework, AJAX, SVN</p>
                 </div>
                 <div className="projectImageContainer">
-                    <img src={PublicView} />
-                    <img src={PublicView2} />
-                    <img src={LoginView} />
-                    <img src={DashView} />
+                    <img alt="" src={PublicView} />
+                    <img alt="" src={PublicView2} />
+                    <img alt="" src={LoginView} />
+                    <img alt="" src={DashView} />
                 </div>
             </div>
         </div>

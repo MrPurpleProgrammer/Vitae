@@ -40,7 +40,7 @@ function BurgerMenu(props) {
         }
     }
     useEffect(() => {
-        if (initialState == false) {
+        if (initialState === false) {
             props.collapseState(false);
         }
         else {

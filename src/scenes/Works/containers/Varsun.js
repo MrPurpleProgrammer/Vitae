@@ -21,10 +21,10 @@ function Varsun(props) {
                     <p>HTML, CSS, Javascript, Jquery, Bootstrap, SEO, SVN</p>
                 </div>
                 <div className="projectImageContainer">
-                    <img src={Home} />
-                    <img src={Services} />
-                    <img src={Partners} />
-                    <img src={Contact} />
+                    <img alt="" src={Home} />
+                    <img alt="" src={Services} />
+                    <img alt="" src={Partners} />
+                    <img alt="" src={Contact} />
                 </div>
             </div>
         </div>

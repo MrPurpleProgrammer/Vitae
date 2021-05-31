@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import bg from '../../assets/Monday Loop.mp3';
-import { useState, useEffect, useRef } from 'react';
+import {useEffect} from 'react';
 
 function Music(props) {
     useEffect(() => {

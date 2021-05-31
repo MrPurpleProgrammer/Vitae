@@ -3,7 +3,7 @@ function Logo(props) {
     let className;
     let history = useHistory();
     let h1 = () => {
-        if(navigator.platform == 'iPhone') {
+        if(navigator.platform === 'iPhone') {
             return(
                 <h1 id="logoMrPurple" className={props.state === 'Landing' ? "glitch-iphone" : "glitch-default-iphone"} data-text="MrPurple">MrPurple</h1>
             )

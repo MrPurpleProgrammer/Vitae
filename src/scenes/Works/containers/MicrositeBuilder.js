@@ -19,8 +19,8 @@ function MicrositeBuilder(props) {
                     <p>HTML, CSS, Javascript, Jquery, Jsrender, .Net, SQL, Query Builder, Analytics Builder, SVN</p>
                 </div>
                 <div className="projectImageContainer">
-                    <img src={DashView}/>
-                    <img src={MainView}/>
+                    <img alt="" src={DashView}/>
+                    <img alt="" src={MainView}/>
                 </div>
             </div>
         </div>

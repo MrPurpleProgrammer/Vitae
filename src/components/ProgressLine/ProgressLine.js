@@ -1,5 +1,4 @@
-import $ from 'jquery'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 function ProgressLine(props) {
     useEffect(() => {
     }, [])

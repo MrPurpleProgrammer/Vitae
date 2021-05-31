@@ -8,7 +8,7 @@ function Proverp(props) {
             <div id="divProjectStatus" className="projectStatusContainer">
                 <div className="projectLinks">
                     <a className="inactive"><h1>Repository</h1></a>
-                    <a target="_blank" href="http://proverp.com"><h1>Website</h1></a>
+                    <a target="_blank" rel="noreferrer" href="http://proverp.com"><h1>Website</h1></a>
                 </div>
                 <div className="projectStatus"><h1>(Status: Online)</h1></div>
             </div>
@@ -22,19 +22,19 @@ function Proverp(props) {
                 <div className="projectLearnContainer">
                     <div>
                         <a target="_blank" href="https://www.proverp.com/Content/documents/proverp/proverp_brochure_final_min.pdf">
-                            <img src="https://proverp.com/Content/themes/default/images/proverp_ser_hr.jpg" />
+                            <img alt="" src="https://proverp.com/Content/themes/default/images/proverp_ser_hr.jpg" />
                             <p>Check out the Brochure</p>
                         </a>
                     </div>
                     <div>
                         <a target="_blank" href="https://www.proverp.com/Content/documents/proverp/Streamlining%20Manufacturing.pdf">
-                            <img src="https://proverp.com/Content/themes/default/images/proverp_ser_dis.jpg" />
+                            <img alt="" src="https://proverp.com/Content/themes/default/images/proverp_ser_dis.jpg" />
                             <p>Learn More About Proverp</p>
                         </a>
                     </div>
-                    <img src={Home} />
-                    <img src={Info1} />
-                    <img src={Info2} />
+                    <img alt="" src={Home} />
+                    <img alt="" src={Info1} />
+                    <img alt="" src={Info2} />
                 </div>
             </div>
         </div>

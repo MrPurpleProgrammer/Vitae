@@ -28,7 +28,7 @@ function Works() {
     let history = useHistory();
     let handleProjectTransition = (e) => {
         $('body').css('overflow-y', 'hidden');
-        if (projectDetail == 'portfolio') {
+        if (projectDetail === 'portfolio') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -37,7 +37,7 @@ function Works() {
                 <Portfolio />
             )
         }
-        if (projectDetail == 'dmct') {
+        if (projectDetail === 'dmct') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -46,7 +46,7 @@ function Works() {
                 <DMCT />
             )
         }
-        if (projectDetail == 'qs') {
+        if (projectDetail === 'qs') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -55,7 +55,7 @@ function Works() {
                 <QuantumSalesman />
             )
         }
-        if (projectDetail == 'cv') {
+        if (projectDetail === 'cv') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -64,7 +64,7 @@ function Works() {
                 <MrPurple />
             )
         }
-        if (projectDetail == 'mp') {
+        if (projectDetail === 'mp') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -73,7 +73,7 @@ function Works() {
                 <MyParents />
             )
         }
-        if (projectDetail == 'ab') {
+        if (projectDetail === 'ab') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -82,7 +82,7 @@ function Works() {
                 <AnalyticsBuilder />
             )
         }
-        if (projectDetail == 'mb') {
+        if (projectDetail === 'mb') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -91,7 +91,7 @@ function Works() {
                 <MicrositeBuilder />
             )
         }
-        if (projectDetail == 'lh') {
+        if (projectDetail === 'lh') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -100,7 +100,7 @@ function Works() {
                 <Lighthouse />
             )
         }
-        if (projectDetail == 'var') {
+        if (projectDetail === 'var') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -109,7 +109,7 @@ function Works() {
                 <Varsun />
             )
         }
-        if (projectDetail == 'proverp') {
+        if (projectDetail === 'proverp') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -118,7 +118,7 @@ function Works() {
                 <Proverp />
             )
         }
-        if (projectDetail == 'aqspec') {
+        if (projectDetail === 'aqspec') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
             $('.stepThree').fadeOut();
@@ -147,7 +147,7 @@ function Works() {
             $('#' + e.currentTarget.id).addClass('activeFilter');
             let domObjs = $('.workGrid>div');
             domObjs.each((i, each) => {
-                if (e.currentTarget.dataset.filter == 'all') {
+                if (e.currentTarget.dataset.filter === 'all') {
                     if($(window).innerWidth() < 850) $(each).removeClass('_workItem').addClass('workItem').show();
                     else {
                         $(each).removeClass('_workItem').addClass('workItem').css('width', "155px").show();
@@ -221,7 +221,7 @@ function Works() {
                             <p className="workTitle">Portfolio</p>
                             <p className="workDescription">An Ethereum based decentralized application(dApp) utilizing the DMCT tech stack and some google machine vision to create non fungible tokens when a user uploads unique media files... </p>
                             <div className="workImages">
-                                <img src={PortDashView} />
+                                <img alt="" src={PortDashView} />
                             </div>
                         </div>
                     </div>
@@ -232,8 +232,8 @@ function Works() {
                             <p className="workDescription">DMCT stands for Digital Media Copyright Token, the premise behind this protocol is to generate digital copyright NFT’s that can identify ownership of a media file on the internet... </p>
                             <div className="projectLearnContainer" style={{ height: "145px", marginTop: "15px" }}>
                                 <div>
-                                    <a target="_blank" href="https://ethereum.org/en/nft/">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/NFT_Icon.png/220px-NFT_Icon.png" />
+                                    <a target="_blank" rel="noreferrer" href="https://ethereum.org/en/nft/">
+                                        <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/NFT_Icon.png/220px-NFT_Icon.png" />
                                         <p>Learn More About NFT's</p>
                                     </a>
                                 </div>
@@ -246,7 +246,7 @@ function Works() {
                             <p className="workTitle">Lighthouse</p>
                             <p className="workDescription">Lighthouse is a enterprise analytics tool, designed specifically for predictive and presprictive maintenance of manufacturing machinery. The general idea is to utilize machine learning... </p>
                             <div className="workImages">
-                                <img src={LighthouseDashView} />
+                                <img alt="" src={LighthouseDashView} />
                             </div>
                         </div>
                     </div>
@@ -256,7 +256,7 @@ function Works() {
                             <p className="workTitle">Quantum Salesman</p>
                             <p className="workDescription">A proof of concept logistics app that solves the traveling salesman problem utilizing IBM’s QISKIT framework. Qiskit provides developers access to IBM’s quantum computer... </p>
                             <div className="workImages">
-                                <img src={QSHome} />
+                                <img alt="" src={QSHome} />
                             </div>
                         </div>
                     </div>
@@ -266,7 +266,7 @@ function Works() {
                             <p className="workTitle">Vitae</p>
                             <p className="workDescription">This website is designed primarily using ReactJs and a whole lot of SCSS animations. Alot of the color schemes and design has inspirations from various portfolio websites... </p>
                             <div className="workImages">
-                                <img src={VitaeGameView} style={{ border: "1px solid #484848" }} />
+                                <img alt="" src={VitaeGameView} style={{ border: "1px solid #484848" }} />
                             </div>
                         </div>
                     </div>
@@ -287,7 +287,7 @@ function Works() {
                             <p className="workTitle">AQSPEC</p>
                             <p className="workDescription">A Sensor Analytics platform for tracking air quality and pollutant metrics for SCAQMD (South Coast Air Quality Management District). This tool utilizes ARCGIS, Highcharts and... </p>
                             <div className="workImages">
-                                <img src={PublicView} />
+                                <img alt="" src={PublicView} />
                             </div>
                         </div>
                     </div>
@@ -297,7 +297,7 @@ function Works() {
                             <p className="workTitle">Analytics Builder</p>
                             <p className="workDescription">A Varsun enterprise suite tool, that I primarily developed, to allow users to design charts and graphs for various kinds of data visualization use cases. The tool utilizes vanilla... </p>
                             <div className="workImages">
-                                <img src={ABMain} />
+                                <img alt="" src={ABMain} />
                             </div>
                         </div>
                     </div>
@@ -307,7 +307,7 @@ function Works() {
                             <p className="workTitle">Microsite Builder</p>
                             <p className="workDescription">A Varsun enterprise tool, that I developed, so generic users with minimal expertise in html, css and javascript can design and link various dashboards and microsites across their... </p>
                             <div className="workImages">
-                                <img src={DashView} />
+                                <img alt="" src={DashView} />
                             </div>
                         </div>
                     </div>
@@ -317,7 +317,7 @@ function Works() {
                             <p className="workTitle">Varsun</p>
                             <p className="workDescription">Redesigned the company website and completely revamped marketing content. The previous company website was a legacy website with very outdated and innacurate content. Utilizing newer... </p>
                             <div className="workImages">
-                                <img src={VAHome} />
+                                <img alt="" src={VAHome} />
                             </div>
                         </div>
                     </div>
@@ -327,7 +327,7 @@ function Works() {
                             <p className="workTitle">Proverp</p>
                             <p className="workDescription">Redesigned the company product website with updated marketing content and cleaner UI/UX. Improved search engine optimization for website, improved sales and lead management pipelining... </p>
                             <div className="workImages">
-                                <img src={PRHome} />
+                                <img alt="" src={PRHome} />
                             </div>
                         </div>
                     </div>
