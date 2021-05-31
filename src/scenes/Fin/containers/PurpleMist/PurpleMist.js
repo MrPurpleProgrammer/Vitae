@@ -1,6 +1,5 @@
 import { Stats } from 'stats.js'
-import { forwardRef, useEffect, useState } from "react";
-import $ from 'jquery'
+import {useEffect } from "react";
 import './style.scss'
 function PurpleMist() {
     let ROWS, COLS;

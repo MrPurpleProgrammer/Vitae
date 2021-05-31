@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dropdown, Button } from 'semantic-ui-react';
 
 const options = [
     { key: 'line', value: 'line', text: 'Line' },

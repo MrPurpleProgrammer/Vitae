@@ -1,11 +1,17 @@
 {
   "short_name": "Vitae",
-  "name": "MrPurple's Curriculum Vitae",
+  "name": "Curriculum Vitae",
+  "description": "A readable Hacker News app.",
   "icons": [
     {
       "src": "tab_icon_2.png",
-      "sizes": "512x512 192x192 144x144 64x64 32x32 24x24 16x16",
-      "type": "image/svg"
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "tab_icon_2_@2x.png",
+      "sizes": "512x512 192x192 144x144",
+      "type": "image/png"
     }
   ],
   "start_url": ".",

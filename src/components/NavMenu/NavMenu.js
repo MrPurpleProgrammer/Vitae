@@ -78,7 +78,10 @@ const NavMenu = forwardRef((props, ref) => {
             setMenuState('contact')
         }
         if(windowWidth < 1200) {
-            $('.burgerMenu').trigger('click');
+            if(navigator.platform === 'iPhone') $('.burgerMenu-iphone').trigger('click');
+            else {
+                $('.burgerMenu').trigger('click');
+            }
         }
     }
     useEffect(() => {
@@ -107,7 +110,10 @@ const NavMenu = forwardRef((props, ref) => {
         $('#divNavContact').next('hr').animate({ width: "0%" });
     }, [])
     useEffect(() => {
-        $('.burgerMenu').toggleClass('opened');
+        if(navigator.platform === 'iPhone') $('.burgerMenu').toggleClass('opened');
+        else {
+            $('.burgerMenu').toggleClass('opened');
+        }
         handleMenuCollapse();
     }, [openState])
     useEffect(() => {

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import ContactMap from "./containers/ContactMap";
 
 function Contact(props) {

@@ -26,7 +26,7 @@ canvas {
 	-moz-transition: all 1s ease;
 	-o-transition: all 1s ease;
 	transition: all 1s ease;
-	cursor: pointer;
+	/* cursor: pointer ; */
 	z-index: 1000;
 }
 
@@ -184,6 +184,29 @@ for more information on how to random skew. */
 		/* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
 	with an alternating animation to keep things fresh. */
 		animation: glitch-anim 5s infinite ease 1.7s alternate-reverse;
+	}
+}
+
+.glitch-iphone-AfterWorkDetails {
+	position: relative;
+	color: white;
+	/* Animation provies a slight random skew. Check bottom of doc
+for more information on how to random skew. */
+	// Creates a copy before our text.
+	&::before {
+		// Duplicates our text with the mixin.
+		@include glitchCopy;
+		// Scoots text slightly to the left for the color offset.
+		left: -5px;
+		// Creates the color 'shadow' that happens on the glitch.
+		text-shadow: -5px 5px #00f7ff;
+		/* Creates an initial clip for our glitch. This works in
+	a typical top,right,bottom,left fashion and creates a mask
+	to only show a certain part of the glitch at a time. */
+		clip: rect(44px, 450px, 56px, 0);
+		/* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
+	with an alternating animation to keep things fresh. */
+		animation: glitch-anim 5s infinite ease alternate-reverse;
 	}
 }
 
@@ -451,7 +474,7 @@ for more information on how to random skew. */
 		}
 	}
 	.wrap_play {
-		cursor: pointer;
+		/* cursor: pointer ; */
 		width: 400px;
 		height: 900px;
 		transform: scale(0.55) translateY(77px);
@@ -522,7 +545,7 @@ for more information on how to random skew. */
 	display: none;
 	font-size: 50px;
 	color: #c4c41747;
-	cursor: pointer;
+	/* cursor: pointer ; */
 }
 
 .flickerOut {
@@ -567,7 +590,7 @@ for more information on how to random skew. */
 	white-space: no-wrap;
 	text-align: center;
 	text-transform: uppercase;
-	cursor: pointer;
+	/* cursor: pointer ; */
 	.text,
 	.decoration {
 		display: inline-block;
@@ -823,9 +846,10 @@ skew to change the 'thickness' of the glitch.*/
 	font-size: 47px;
 	color: #1e55b4;
 	position: sticky;
+	position: -webkit-sticky;
 	top: 50px;
 	left: 50px;
-	cursor: pointer;
+	/* cursor: pointer ; */
 	z-index: 100;
 }
 
@@ -919,6 +943,10 @@ skew to change the 'thickness' of the glitch.*/
 	text-decoration: underline;
 }
 
+.projectLinks > a > h1:hover {
+	color: #c4c417;
+}
+
 .projectImageContainer {
 	width: inherit;
 	height: 200px;
@@ -941,9 +969,9 @@ skew to change the 'thickness' of the glitch.*/
 }
 
 .projectImageContainer > img {
-    margin-bottom: 15px;
-    width: 100%;
-    border: 1px solid #505050;
+	margin-bottom: 15px;
+	width: 100%;
+	border: 1px solid #505050;
 }
 
 .projectLearnContainer {
@@ -980,6 +1008,8 @@ skew to change the 'thickness' of the glitch.*/
 
 .projectLearnContainer > img {
 	padding-right: 20px;
+	padding-bottom: 15px;
+	width: 100%;
 }
 
 .projectLearnContainer div p {
@@ -1337,7 +1367,7 @@ svg #wheel {
 		margin: 0% 5%;
 		font-family: "Haettenschweiler";
 		position: relative;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		z-index: 100;
 		opacity: 0;
 		transform: translateX(-30px);
@@ -1399,7 +1429,15 @@ svg #wheel {
 	.burgerMenu {
 		background-color: transparent;
 		border: none;
-		cursor: pointer;
+		/* cursor: pointer ; */
+		padding: 0;
+		margin: -25px -10px;
+	}
+
+	.burgerMenu-iphone {
+		background-color: transparent;
+		border: none;
+		/* cursor: pointer ; */
 		padding: 0;
 		margin: -25px -10px;
 	}
@@ -1575,7 +1613,7 @@ svg #wheel {
 		margin: 0% 5%;
 		font-family: "Haettenschweiler";
 		position: relative;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		z-index: 100;
 		opacity: 0;
 		transform: translateX(-30px);
@@ -1638,7 +1676,7 @@ svg #wheel {
 		background-color: #343434;
 		/* border: 2px solid #bd7dff; */
 		/* box-shadow: 3px 1px 15px #1e55b4; */
-		cursor: pointer;
+		/* cursor: pointer ; */
 		margin-right: 30px;
 		border-radius: 153px;
 		height: 60px;
@@ -1650,6 +1688,28 @@ svg #wheel {
 	}
 
 	.burgerMenu > svg {
+		width: 55px;
+		position: relative;
+		top: -23px;
+		left: -6px;
+	}
+
+	.burgerMenu-iphone {
+		background-color: #343434;
+		/* border: 2px solid #bd7dff; */
+		/* box-shadow: 3px 1px 15px #1e55b4; */
+		/* cursor: pointer ; */
+		margin-right: 30px;
+		border-radius: 153px;
+		height: 60px;
+		position: fixed;
+		width: 60px;
+		top: 4.3%;
+		right: 0%;
+		z-index: 2002;
+	}
+
+	.burgerMenu-iphone > svg {
 		width: 55px;
 		position: relative;
 		top: -23px;
@@ -1952,7 +2012,7 @@ svg #wheel {
 	}
 
 	.filterList > div > p {
-		cursor: pointer;
+		/* cursor: pointer ; */
 	}
 
 	.filterList > .activeFilter {
@@ -1997,7 +2057,7 @@ svg #wheel {
 		width: 155px;
 		border: solid 5px #1e55b4;
 		position: relative;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		opacity: 0;
 		border-radius: 5px;
 	}
@@ -2013,7 +2073,7 @@ svg #wheel {
 		width: 155px;
 		border: solid 5px #1e55b4;
 		position: relative;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		opacity: 1;
 		border-radius: 5px;
 	}
@@ -2113,10 +2173,14 @@ svg #wheel {
 	}
 
 	._workItem .workTitle {
-		display: none;
+		display: block;
 	}
 
 	._workItem .workImages {
+		display: none;
+	}
+
+	._workItem .projectLearnContainer {
 		display: none;
 	}
 
@@ -2156,7 +2220,7 @@ svg #wheel {
 		animation-fill-mode: forwards;
 		padding: 5px 0px 0px 0px;
 		line-height: 35px;
-		cursor: pointer;
+		/* cursor: pointer ; */
 	}
 
 	.contactList p > a:hover {
@@ -2213,7 +2277,7 @@ svg #wheel {
 		top: 48%;
 		text-shadow: -5px 2px 3px #1e55b4;
 		color: #be7dff;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		z-index: 100;
 	}
 
@@ -2351,13 +2415,13 @@ svg #wheel {
 	.question:hover {
 		text-decoration: underline;
 		color: #a7e1ae !important;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		text-shadow: -4px 1px 1px #1c55b4;
 		text-decoration-thickness: 2px;
 	}
 
 	.question p {
-		cursor: pointer;
+		/* cursor: pointer ; */
 	}
 
 	.key2 {
@@ -2529,7 +2593,7 @@ svg #wheel {
 		top: 48%;
 		text-shadow: -5px 2px 3px #1e55b4;
 		color: #be7dff;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		z-index: 100;
 	}
 
@@ -2646,13 +2710,13 @@ svg #wheel {
 	.question:hover {
 		text-decoration: underline;
 		color: #a7e1ae !important;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		text-shadow: -4px 1px 1px #1c55b4;
 		text-decoration-thickness: 2px;
 	}
 
 	.question p {
-		cursor: pointer;
+		/* cursor: pointer ; */
 	}
 
 	.key2 {
@@ -2706,7 +2770,7 @@ svg #wheel {
 		display: inline-block;
 		width: 5px !important;
 		height: 10px;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		border: solid 1px #343434;
 	}
 
@@ -2834,7 +2898,7 @@ svg #wheel {
 		display: none;
 		font-size: 30px;
 		color: #c4c41747;
-		cursor: pointer;
+		/* cursor: pointer ; */
 	}
 	.contentView {
 		height: 100%;
@@ -3005,7 +3069,7 @@ svg #wheel {
 		width: 290px;
 		border: solid 5px #1e55b4;
 		position: relative;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		opacity: 0;
 		margin-right: 15px;
 		border-radius: 5px;
@@ -3017,7 +3081,7 @@ svg #wheel {
 		width: 290px;
 		border: solid 5px #1e55b4;
 		position: relative;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		opacity: 1;
 		margin-right: 15px;
 		border-radius: 5px;
@@ -3032,7 +3096,7 @@ svg #wheel {
 	}
 
 	.filterList > div > p {
-		cursor: pointer;
+		/* cursor: pointer ; */
 	}
 
 	.filterList > .activeFilter {
@@ -3166,7 +3230,7 @@ svg #wheel {
 
 	.workItem .workImages {
 		position: relative;
-		/* height: 100%; */
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		width: 95%;
@@ -3250,9 +3314,10 @@ svg #wheel {
 		font-size: 40px;
 		color: #1e55b4;
 		position: sticky;
+		position: -webkit-sticky;
 		top: 42px;
 		left: 20px;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		z-index: 100;
 	}
 
@@ -3280,6 +3345,10 @@ svg #wheel {
 		font-weight: 100;
 		text-decoration: underline;
 	}
+
+	.projectLinks > a > h1:hover {
+		color: #c4c417;
+	}	
 
 	.projectStatus h1 {
 		font-size: 12px;
@@ -3336,7 +3405,7 @@ svg #wheel {
 		animation-fill-mode: forwards;
 		padding: 5px 0px 0px 0px;
 		line-height: 15px;
-		cursor: pointer;
+		/* cursor: pointer ; */
 	}
 
 	.contactList {
@@ -3399,7 +3468,7 @@ svg #wheel {
 		top: 53%;
 		text-shadow: -5px 2px 3px #1e55b4;
 		color: #be7dff;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		z-index: 100;
 	}
 
@@ -3533,13 +3602,13 @@ svg #wheel {
 	.question:hover {
 		text-decoration: underline;
 		color: #a7e1ae !important;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		text-shadow: -4px 1px 1px #1c55b4;
 		text-decoration-thickness: 2px;
 	}
 
 	.question p {
-		cursor: pointer;
+		/* cursor: pointer ; */
 	}
 
 	.key2 {
@@ -3552,6 +3621,31 @@ svg #wheel {
 		z-index: -1;
 		font-size: 10px !important;
 	}
+}
+
+@media only screen and (hover: none) and (pointer: coarse) and (max-width: 850px) {
+	.burgerMenu-iphone {
+		background-color: #343434;
+		/* cursor: pointer ; */
+		margin-right: 30px;
+		border-radius: 153px;
+		height: 60px;
+		position: fixed;
+		width: 60px;
+		top: 2.3% !important;
+		right: -2% !important;
+		z-index: 2002;
+	}
+
+	.burgerMenu-iphone svg {
+		left: -9px !important;
+		top: -21px !important;
+	}
+	
+	.workItem .workImages img {
+		height: 150px;
+	}
+
 }
 
 @media only screen and (max-device-width: 850px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
@@ -3743,7 +3837,7 @@ svg #wheel {
 		top: 48%;
 		text-shadow: -5px 2px 3px #1e55b4;
 		color: #be7dff;
-		cursor: pointer;
+		/* cursor: pointer ; */
 		z-index: 100;
 	}
 }

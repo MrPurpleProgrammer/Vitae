@@ -6,13 +6,15 @@ function Mouse(props) {
     let links;
     let turbulence;
     let circle;
+    let circle_shadow;
     let durationTime;
-
+    let pointerDOMS = ".innerNavText span, .burgerMenu svg, .burgerMenu svg path, .workItem, .workItem div, .workItem div p, ._workItem, ._workItem div, ._workItem div p, .btn-glitch-fill, .btn-glitch-fill span, .music i, .filterList div p, button, a, i, .cell, .holder .note, .projectLinks h1, .projectLearnContainer div, .projectLearnContainer div img, .projectLearnContainer div p"
     useEffect(() => {
         cursor = document.querySelector(".cursor");
         links = document.querySelectorAll(".link");
         turbulence = document.querySelector("feTurbulence");
-        circle = document.querySelector(".cursor-circle");
+        circle = document.querySelector(".cursor-circle-main");
+        circle_shadow = document.querySelector(".cursor-circle-shadow");
         durationTime = 0.5;
     
         document.addEventListener("mousemove", (e) => {
@@ -45,35 +47,86 @@ function Mouse(props) {
                 attr: { r: 20 }
             });
         });
-    
-        document.addEventListener("mouseover", (e) => {
-            if (!e.target.matches(".innerNavText span, .burgerMenu svg, .workItem, .btn-glitch-fill, .btn-glitch-fill span, .music i")) return;
+        
+        document.addEventListener("touchstart", (e) => {
             gsap.to(turbulence, {
                 duration: 3,
-                startAt: { attr: { baseFrequency: 0.04 } },
-                attr: { baseFrequency: 0.1 }
+                ease: "back.out(1.7)",
+                startAt: { attr: { baseFrequency: 0.05 } },
+                attr: { baseFrequency: 0 }
             });
-    
             gsap.to(circle, {
-                duration: 1,
+                duration: 3,
+                ease: "back.out(1.7)",
                 startAt: { attr: { r: 20 } },
-                attr: { r: 40 }
+                attr: { r: 20 }
             });
+        });
+        
+        document.addEventListener("mouseover", (e) => {
+            if (!e.target.matches(pointerDOMS)) return;
+            if(circle.attributes.r.value == "20") {
+                gsap.to(circle, {
+                    duration: 0.3,
+                    startAt: { attr: { r: 20 } },
+                    attr: { r: 8 }
+                });
+                gsap.to(circle_shadow, {
+                    duration: 0.3,
+                    startAt: { attr: { r: 20 } },
+                    attr: { r: 10 }
+                });
+            }
+            // gsap.to(turbulence, {
+            //     duration: 3,
+            //     startAt: { attr: { baseFrequency: 0.04 } },
+            //     attr: { baseFrequency: 0.1 }
+            // });
+            else {
+                gsap.to(circle, {
+                    duration: 0.3,
+                    startAt: { attr: { r: 8 } },
+                    attr: { r: 8 }
+                });
+                gsap.to(circle_shadow, {
+                    duration: 0.3,
+                    startAt: { attr: { r: 10 } },
+                    attr: { r: 10 }
+                });
+            }
         });
     
         document.addEventListener("mouseout", (e) => {
-            if (!e.target.matches(".innerNavText span, .burgerMenu svg, .workItem, .btn-glitch-fill, .btn-glitch-fill span, .music i")) return;
-            gsap.to(turbulence, {
-                duration: 2,
-                startAt: { attr: { baseFrequency: 0.1 } },
-                attr: { baseFrequency: 0 }
-            });
-
-            gsap.to(circle, {
-                duration: 1,
-                startAt: { attr: { r: 40 } },
-                attr: { r: 20 }
-            });
+            if (!e.target.matches(pointerDOMS)) return;
+            // gsap.to(turbulence, {
+            //     duration: 2,
+            //     startAt: { attr: { baseFrequency: 0.1 } },
+            //     attr: { baseFrequency: 0 }
+            // });
+            if(circle.attributes.r.value == "8") {
+                gsap.to(circle, {
+                    duration: 0.3,
+                    startAt: { attr: { r: 8 } },
+                    attr: { r: 20 }
+                });
+                gsap.to(circle_shadow, {
+                    duration: 0.3,
+                    startAt: { attr: { r: 10 } },
+                    attr: { r: 20 }
+                });
+            }
+            else {
+                gsap.to(circle, {
+                    duration: 0.3,
+                    startAt: { attr: { r: 20 } },
+                    attr: { r: 20 }
+                });
+                gsap.to(circle_shadow, {
+                    duration: 0.3,
+                    startAt: { attr: { r: 20 } },
+                    attr: { r: 20 }
+                });
+            }
         });    
     }, [])
 
@@ -85,8 +138,8 @@ function Mouse(props) {
             <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="60" in="SourceGraphic" in2="warp"></feDisplacementMap>
           </filter>
         </defs>
-        <circle className="cursor-circle" cx="70" cy="70" r="20" style={{fill: "rgb(30 85 180)", stroke: "rgb(30 85 180)"}}></circle>
-        <circle className="cursor-circle" cx="74" cy="68" r="20" style={{fill: "#be7dff", stroke: "#be7dff"}}></circle>
+        <circle className="cursor-circle-shadow" cx="70" cy="70" r="20" style={{fill: "rgb(30 85 180)", stroke: "rgb(30 85 180)"}}></circle>
+        <circle className="cursor-circle-main" cx="74" cy="68" r="20" style={{fill: "#be7dff", stroke: "#be7dff"}}></circle>
       </svg>
     )
 }

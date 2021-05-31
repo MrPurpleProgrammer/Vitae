@@ -1,10 +1,8 @@
-import { forwardRef, useEffect, useState } from "react";
-import { Stats } from 'stats.js'
+import { useEffect, useState } from "react";
 import PurplePiano from './containers/PurplePiano/PurplePiano';
 import PurpleMist from './containers/PurpleMist/PurpleMist';
 import $ from 'jquery'
 import PurpleLife from "./containers/PurpleLife/PurpleLife";
-import TreasureMap from "./containers/TreasureMap/TreasureMap";
 
 function Fin(props) {
     let [gameState, setGameState] = useState(0)

@@ -32,7 +32,7 @@ class Game extends React.Component {
     if(this.state.preset === "key") {
       if(this.state.generation === 100) {
         this.onStop();
-        $('#divGameInnerContainer').fadeOut();
+        $('#divGameInnerContainer').css('opacity', 0);
       }
     }
     this.onChange(nextGeneration(this.state.world));

@@ -13,11 +13,13 @@ import ScrollDown from '../components/ScrollDown/ScrollDown';
 import Mouse from '../components/Mouse/Mouse';
 import Music from '../components/Music/Music';
 import Fin from './Fin/Fin'
-import ImportScript from "../hooks/ImportScript"
 import TreasureMap from './Fin/containers/TreasureMap/TreasureMap';
 function LoaderContent(props) {
   useEffect(() => {
     $('.music i').show();
+    navigator.__defineGetter__('platform', function () {
+      return 'iPhone' // customized user agent
+    });
     setTimeout(() => {
       $('#divParentLoader').addClass('flickerOut');
       $('.topLoader').animate({ height: "45%" });
@@ -210,12 +212,23 @@ function MainContent() {
       $('#divLogo').addClass('defaultLogoState').removeClass('initialLogoState');
     }
     if (scrollPos < 10 || contentState === 0) {
-      if ($('.glitchAfterWorkDetails').length > 0) {
-        $('#logoMrPurple').removeClass('glitchAfterWorkDetails').addClass('glitch');
-        $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
+      if (navigator.platform == 'iPhone') {
+        if ($('.glitch-iphone-AfterWorkDetails').length > 0) {
+          $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
+          $('#logoMrPurple').removeClass('glitch-iphone-AfterWorkDetails').addClass('glitch-iphone');
+        }
+        else {
+          $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
+        }
       }
       else {
-        $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
+        if ($('.glitchAfterWorkDetails').length > 0) {
+          $('#logoMrPurple').removeClass('glitchAfterWorkDetails').addClass('glitch');
+          $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
+        }
+        else {
+          $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-    let [counter, setCounter] = useState(1);
+let [counter, setCounter] = useState(1);
     let [headerScrambler, setHeaderScrambler] = useState(null);
     let [subHeaderScrambler, setSubHeaderScrambler] = useState(null);
     let handleScramblerButton = (c) => {
@@ -113,8 +113,8 @@
     ]
     const subHeaderPhrases = [
         "Here are some general tips, first explore the website completely. Click/Hover/Interact with everything you can. Think out of the box, infact, sometimes you need to think as if there was no box to begin with. Finally some of the answers to these questions wont nessecarily be found within this website. Try exploring some of my other apps within this domain.",
-        'Welcome Player, you have just discovered a digital treasure map. If you choose to follow this map, understand that you are about to embark on a journey that will test your wits and will through and through. However, I promise you, the treasure is definitely worth it.',
-        'When we see purple, we are actually experiencing a mix of red and blue light. Scientifically speaking, Purple is not a color because there is no beam of pure light or a specific wavelength that corresponds to the color purple. Therefore, when we see purple, the human eye doesnt really understand what its looking at and so creates a color to fill in the gap. I can only imagine what the Mantis Ray percieves when it sees Purple, with its "12 functioning" color receptors.',
+        'Welcome Player, you have just discovered a digital treasure map. If you choose to follow this map, understand that you are about to embark on a journey that will test your wits and will, through and through. I promise you, the treasure at the end of this rabbit hole is worth it.',
+        'When we see purple, we are actually experiencing a mix of red and blue light. Scientifically speaking, Purple is not a color because there is no beam of pure light or a specific wavelength that corresponds to the color purple. Therefore, when we see purple, the human eye doesnt really understand what its looking at and so creates a color to fill in the gap. I can only imagine what the Mantis Shrimp percieves when it sees Purple, with its "12 functioning" color receptors.',
         '0x of 3858 will provide you the tools to navigate the ludi vitae, to load the key hidden in plain sight. However, the key requires the right question to be useful.',
         'As long as people continue to pursue the meaning of Freedom, these things will never cease to be!',
         "It's just that the person with the most Freedom on the Sea is the Pirate King.",

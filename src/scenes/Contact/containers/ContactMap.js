@@ -71,18 +71,18 @@ class ContactMap extends React.Component {
             .addTo(map);
         $('.contactMap').on("resize", map.resize());
         map.on('move', () => {
-            console.log({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2),
-                bearing: map.getBearing(),
-            })
-            this.setState({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2),
-                bearing: map.getBearing(),
-            });
+            // console.log({
+            //     lng: map.getCenter().lng.toFixed(4),
+            //     lat: map.getCenter().lat.toFixed(4),
+            //     zoom: map.getZoom().toFixed(2),
+            //     bearing: map.getBearing(),
+            // })
+            // this.setState({
+            //     lng: map.getCenter().lng.toFixed(4),
+            //     lat: map.getCenter().lat.toFixed(4),
+            //     zoom: map.getZoom().toFixed(2),
+            //     bearing: map.getBearing(),
+            // });
         });
         map.resize();
         map.scrollZoom.disable();

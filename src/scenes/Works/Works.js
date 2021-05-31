@@ -4,7 +4,7 @@ import Portfolio from './containers/Portfolio';
 import DMCT from './containers/DMCT';
 import QuantumSalesman from './containers/QuantumSalesman'
 import MrPurple from './containers/Vitae'
-import { Route, Switch, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import AnalyticsBuilder from "./containers/AnalyticsBuilder";
 import MicrositeBuilder from "./containers/MicrositeBuilder";
 import Lighthouse from "./containers/Lighthouse";
@@ -27,6 +27,7 @@ function Works() {
     const [projectDetail, setProjectDetail] = useState('none');
     let history = useHistory();
     let handleProjectTransition = (e) => {
+        $('body').css('overflow-y', 'hidden');
         if (projectDetail == 'portfolio') {
             $('.defaultLogoState').fadeOut(500);
             $('.navMenu').fadeOut(500);
@@ -127,10 +128,17 @@ function Works() {
             )
         }
         else {
-            $('#logoMrPurple').removeClass('glitch');
+            $('body').css('overflow-y', 'scroll');
             $('.navMenu').show();
             $('#divWorkDetails').fadeOut()
-            setTimeout(() => { $('.stepThree').fadeIn(); $('.defaultLogoState').show(); $('#logoMrPurple').addClass('glitchAfterWorkDetails'); }, 700)
+            if(navigator.platform === 'iPhone') {
+                $('#logoMrPurple').removeClass('glitch-iphone');
+                setTimeout(() => { $('.stepThree').fadeIn(); $('.defaultLogoState').show(); $('#logoMrPurple').addClass('glitch-iphone-AfterWorkDetails'); }, 700)
+            }
+            else {
+                $('#logoMrPurple').removeClass('glitch');
+                setTimeout(() => { $('.stepThree').fadeIn(); $('.defaultLogoState').show(); $('#logoMrPurple').addClass('glitchAfterWorkDetails'); }, 700)
+            }
         }
     }
     useEffect(() => {
@@ -140,24 +148,29 @@ function Works() {
             let domObjs = $('.workGrid>div');
             domObjs.each((i, each) => {
                 if (e.currentTarget.dataset.filter == 'all') {
-                    $(each).removeClass('_workItem').addClass('workItem');
+                    if($(window).innerWidth() < 850) $(each).removeClass('_workItem').addClass('workItem').show();
+                    else {
+                        $(each).removeClass('_workItem').addClass('workItem').css('width', "155px").show();
+                    }
                 }
                 else {
                     $(each).removeClass('workItem').addClass('_workItem');
                 }
             });
             let _domObjs = $('._workItem')
-            _domObjs.each((i, each) => {
-                if (!$(each).data('filterTags').includes(e.currentTarget.dataset.filter)) {
-                    // console.log($(each).data('filterTags').includes($(e).data('filter')), $(each).data('filterTags'))
-                    $(each).animate({ width: "0px" }, () => {
-                        $(each).hide();
-                    })
-                }
-                else {
-                    $(each).show().animate({ width: "155px" });
-                }
-            })
+            if (e.currentTarget.dataset.filter !== 'all') {
+                _domObjs.each((i, each) => {
+                    if (!$(each).data('filterTags').includes(e.currentTarget.dataset.filter)) {
+                        // console.log($(each).data('filterTags').includes($(e).data('filter')), $(each).data('filterTags'))
+                        $(each).animate({ width: "0px" }, () => {
+                            $(each).hide();
+                        })
+                    }
+                    else {
+                        $(each).show().animate({ width: "155px" });
+                    }
+                })
+            }
         });
         $('.divWorkDetails').hide();
         $('.workItem').on('click', (e) => { setProjectDetail(e.currentTarget.dataset.work) });
@@ -321,7 +334,7 @@ function Works() {
                 </div>
             </div>
             <div id="divWorkDetails" className="workDetails">
-                <i className="fas fa-arrow-left" onClick={() => { setProjectDetail('none') }}></i>
+                <i className="fas fa-arrow-left" onClick={() => { setProjectDetail('none') }} style={navigator.platform === 'iPhone' ? {position: 'relative'} : {}}></i>
                 {handleProjectTransition()}
             </div>
         </div>
