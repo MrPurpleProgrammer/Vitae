@@ -24,7 +24,8 @@ class ContactMap extends React.Component {
             zoom: this.state.zoom,
             trackResize: true,
             bearing: this.state.bearing,
-            interactive: $(window).width() > 850 ? true : false
+            interactive: $(window).width() > 850 ? true : false,
+            doubleClickZoom : false
         });
         setTimeout(() => {
             if($(window).height() < 850) {
@@ -86,6 +87,7 @@ class ContactMap extends React.Component {
         });
         map.resize();
         map.scrollZoom.disable();
+        map.doubleClickZoom.disable();
     }
 
     componentWillUnmount() {

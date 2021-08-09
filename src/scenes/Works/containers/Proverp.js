@@ -1,6 +1,8 @@
 import Home from '../../../assets/Works/Proverp/Proverp_Home.png';
 import Info1 from '../../../assets/Works/Proverp/Proverp_Info1.png';
 import Info2 from '../../../assets/Works/Proverp/Proverp_Info2.png';
+import ser_dis from '../../../assets/Works/Proverp/proverp_ser_dis.jpg';
+import ser_hr from '../../../assets/Works/Proverp/proverp_ser_hr.png';
 
 function Proverp(props) {
     return (
@@ -21,17 +23,18 @@ function Proverp(props) {
                 </div>
                 <div className="projectLearnContainer">
                     <div>
-                        <a target="_blank" href="https://www.proverp.com/Content/documents/proverp/proverp_brochure_final_min.pdf">
-                            <img alt="" src="https://proverp.com/Content/themes/default/images/proverp_ser_hr.jpg" />
+                        <a target="_blank" href="http://www.proverp.com/Content/documents/proverp/proverp_brochure_final_min.pdf">
+                            <img alt="" src={ser_hr} />
                             <p>Check out the Brochure</p>
                         </a>
                     </div>
                     <div>
-                        <a target="_blank" href="https://www.proverp.com/Content/documents/proverp/Streamlining%20Manufacturing.pdf">
-                            <img alt="" src="https://proverp.com/Content/themes/default/images/proverp_ser_dis.jpg" />
+                        <a target="_blank" href="http://www.proverp.com/Content/documents/proverp/Streamlining%20Manufacturing.pdf">
+                            <img alt="" src={ser_dis} />
                             <p>Learn More About Proverp</p>
                         </a>
-                    </div>
+                    </div> 
+                    
                     <img alt="" src={Home} />
                     <img alt="" src={Info1} />
                     <img alt="" src={Info2} />

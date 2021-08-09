@@ -68,10 +68,9 @@
   border-radius: 15px;
   text-align: center;
   margin: 10px;
-  cursor: crosshair;
+  cursor: none;
   vertical-align: bottom;
   transition: 0.1s all;
-  cursor: pointer;
 }
 
 .controls select {
@@ -103,15 +102,6 @@
 
 .row {
   height: 10px;
-}
-
-.cell {
-  background-color: #4a4a4a;
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
-  border: solid 1px #343434;
 }
 
 .cell:hover {
@@ -153,7 +143,7 @@
   display: inline-block;
   width: 8px;
   height: 10px;
-  cursor: pointer;
+  cursor: none;
   border: solid 1px #343434;
 }
 }

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-function About() {
+function About(props) {
     let quoteAnimation = () => {
         var text = document.getElementById('pQuote');
         var newDom = '';

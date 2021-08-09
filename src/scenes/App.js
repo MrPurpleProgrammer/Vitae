@@ -37,7 +37,9 @@ function LoaderContent(props) {
     $('.topLoader').animate({ height: "0%" });
     $('#musicIcon').toggleClass('fa-volume-mute');
     $('#musicIcon').toggleClass('fa-volume-up');
-    document.querySelector("audio").paused ? document.querySelector("audio").play() : document.querySelector("audio").pause();
+    //document.querySelector("audio").paused ? document.querySelector("audio").play() : document.querySelector("audio").pause();
+    document.querySelector("audio").play();
+    document.body.style.overflowY = "auto";
     $('.bottomLoader').animate({ height: "0%" }, () => {
       props.loaderState(false);
     });
@@ -85,6 +87,7 @@ function MainContent() {
   let handleScrollTransition = () => {
     let pos = showScrollPosition(document.body);
     setScrollPos(pos);
+    console.log(pos);
     if (pos >= 0 && pos < 20) setContentState(0);
     else if (pos >= 20 && pos < 40 && contentState !== 1) setContentState(1);
     else if (pos >= 40 && pos < 60 && contentState !== 2) {
@@ -224,7 +227,7 @@ function MainContent() {
       }
       else {
         if ($('.glitchAfterWorkDetails').length > 0) {
-          $('#logoMrPurple').removeClass('glitchAfterWorkDetails').addClass('glitch');
+          $('#logoMrPurple').addClass('glitch').removeClass('glitchAfterWorkDetails');
           $('#divLogo').addClass('initialLogoState').removeClass('defaultLogoState');
         }
         else {
